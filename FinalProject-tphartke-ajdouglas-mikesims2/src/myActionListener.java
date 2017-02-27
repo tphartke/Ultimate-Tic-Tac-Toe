@@ -55,9 +55,10 @@ class myActionListener implements ActionListener {
     private void buttonPress(int x, int y){
         UI.boardButtons[x][y].setText(currentTurnPiece);
         UI.outputField.append("Put " + currentTurnPiece + " in column " + (y+1) + " row " + (x+1) + ".\n");
-        Turn.turnNumber++;
         makeButtonsUnEnabled();
         UI.boardButtons[x][y].setEnabled(false);
+        Turn.turnNumber++;
+        turn.gameIsTied();
     }
     private void makeButtonsUnEnabled(){
         if(turn.gameIsFinished()){

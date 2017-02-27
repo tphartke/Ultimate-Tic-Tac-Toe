@@ -14,15 +14,25 @@ class Turn {
     }
 
     boolean gameIsFinished(){
+        boolean gameWon = gameIsWon();
+        boolean gameTied = gameIsTied();
+        return gameTied || gameWon;
+    }
+
+    private boolean gameIsWon(){
         boolean gameWon = currentGame.checkForWinCondition();
+        if(gameWon){
+            victoryDialogue();
+        }
+        return gameWon;
+    }
+
+    boolean gameIsTied(){
         boolean gameTied = currentGame.checkTieCondition();
         if(gameTied){
             tieDialogue();
         }
-        else if(gameWon){
-            victoryDialogue();
-        }
-        return gameTied || gameWon;
+        return gameTied;
     }
 
     private void victoryDialogue(){
