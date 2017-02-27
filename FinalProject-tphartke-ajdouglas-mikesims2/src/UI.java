@@ -1,14 +1,18 @@
+import javafx.scene.control.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.TextArea;
 
 class UI extends JFrame {
     private JFrame frame = new JFrame("Tic-Tac-Toe");
     static JButton[][] boardButtons = new JButton[3][3];
-    private JButton newGameButton = new JButton("New Game");
+    static JButton newGameButton = new JButton("New Game");
     private static final int FRAME_HEIGHT = 500;
     private static final int FRAME_WIDTH = 500;
     private JPanel playingBoard = new JPanel(new GridLayout(3, 3));
     private JPanel panel = new JPanel(new BorderLayout());
+    static TextArea outputField = new TextArea();
 
     UI(){
         super();
@@ -19,7 +23,7 @@ class UI extends JFrame {
     private void createFrame(){
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
@@ -29,6 +33,8 @@ class UI extends JFrame {
         initializeGameBoard();
         initializeStartButton();
         panel.add(playingBoard, BorderLayout.NORTH);
+        outputField.setEditable(false);
+        panel.add(outputField);
         frame.add(panel);
     }
 
