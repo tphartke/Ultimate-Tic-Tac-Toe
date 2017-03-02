@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +13,6 @@ class myActionListener implements ActionListener {
 
         if(e.getSource() == UI.boardButtons[0][0]){
             buttonPress(0, 0);
-
         }
 
         else if(e.getSource() == UI.boardButtons[0][1]){
