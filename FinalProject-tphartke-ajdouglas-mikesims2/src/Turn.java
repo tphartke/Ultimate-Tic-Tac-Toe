@@ -13,16 +13,11 @@ class Turn {
         return turnNumber;
     }
 
-    boolean gameIsFinished(){
-        boolean gameWon = gameIsWon();
-        boolean gameTied = gameIsTied();
-        return gameTied || gameWon;
-    }
-
-    private boolean gameIsWon(){
+    boolean gameIsWon(){
         boolean gameWon = currentGame.checkForWinCondition();
         if(gameWon){
             victoryDialogue();
+            myActionListener.makeButtonsUnEnabled();
         }
         return gameWon;
     }
@@ -31,6 +26,7 @@ class Turn {
         boolean gameTied = currentGame.checkTieCondition();
         if(gameTied){
             tieDialogue();
+            myActionListener.makeButtonsUnEnabled();
         }
         return gameTied;
     }

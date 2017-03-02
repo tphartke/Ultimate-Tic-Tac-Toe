@@ -1,3 +1,5 @@
+import java.awt.*;
+
 import static java.lang.Math.pow;
 
 class TicTacToe {
@@ -35,6 +37,7 @@ class TicTacToe {
     boolean verticalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
             if(UIButtonMatchesPiece(i, 0, ticTacToePiece) && UIButtonMatchesPiece(i, 1, ticTacToePiece) && UIButtonMatchesPiece(i, 2, ticTacToePiece)){
+                setBackgroundColorForVerticalVictory(i);
                 return true;
             }
         }
@@ -44,9 +47,9 @@ class TicTacToe {
     boolean horizontalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
             if(UIButtonMatchesPiece(0, i, ticTacToePiece) && UIButtonMatchesPiece(1, i, ticTacToePiece) && UIButtonMatchesPiece(2, i, ticTacToePiece)){
+                setBackgroundColorForHorizontalVictory(i);
                 return true;
             }
-
         }
         return false;
     }
@@ -54,12 +57,17 @@ class TicTacToe {
     boolean diagonalVictory(String ticTacToePiece){
 
         if(UIButtonMatchesPiece(0, 0, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 2, ticTacToePiece)){
+            UI.boardButtons[0][0].setBackground(Color.red);
+            UI.boardButtons[1][1].setBackground(Color.red);
+            UI.boardButtons[2][2].setBackground(Color.red);
             return true;
-
         }
-        else if(UIButtonMatchesPiece(0, 2, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 0, ticTacToePiece)){
-            return true;
 
+        else if(UIButtonMatchesPiece(0, 2, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 0, ticTacToePiece)){
+            UI.boardButtons[0][2].setBackground(Color.red);
+            UI.boardButtons[1][1].setBackground(Color.red);
+            UI.boardButtons[2][0].setBackground(Color.red);
+            return true;
         }
         return false;
     }
@@ -78,5 +86,17 @@ class TicTacToe {
 
     private boolean UIButtonMatchesPiece(int x, int y, String ticTacToePiece){
         return UI.boardButtons[x][y].getText().matches(ticTacToePiece);
+    }
+
+    private void setBackgroundColorForHorizontalVictory(int verticalIndex){
+        UI.boardButtons[0][verticalIndex].setBackground(Color.red);
+        UI.boardButtons[1][verticalIndex].setBackground(Color.red);
+        UI.boardButtons[2][verticalIndex].setBackground(Color.red);
+    }
+
+    private void setBackgroundColorForVerticalVictory(int horizontalIndex){
+        UI.boardButtons[horizontalIndex][0].setBackground(Color.red);
+        UI.boardButtons[horizontalIndex][1].setBackground(Color.red);
+        UI.boardButtons[horizontalIndex][2].setBackground(Color.red);
     }
 }

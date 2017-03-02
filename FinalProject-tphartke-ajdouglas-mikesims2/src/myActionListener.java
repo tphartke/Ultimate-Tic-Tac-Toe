@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +14,7 @@ class myActionListener implements ActionListener {
 
         if(e.getSource() == UI.boardButtons[0][0]){
             buttonPress(0, 0);
+
         }
 
         else if(e.getSource() == UI.boardButtons[0][1]){
@@ -55,26 +58,25 @@ class myActionListener implements ActionListener {
     private void buttonPress(int x, int y){
         UI.boardButtons[x][y].setText(currentTurnPiece);
         UI.outputField.append("Put " + currentTurnPiece + " in column " + (y+1) + " row " + (x+1) + ".\n");
-        makeButtonsUnEnabled();
+        turn.gameIsWon();
         UI.boardButtons[x][y].setEnabled(false);
         Turn.turnNumber++;
         turn.gameIsTied();
     }
-    private void makeButtonsUnEnabled(){
-        if(turn.gameIsFinished()){
+    static void makeButtonsUnEnabled(){
             for(int i = 0; i < 3; i++){
                 for(int j = 0; j < 3; j++){
                     UI.boardButtons[i][j].setEnabled(false);
                 }
             }
-        }
     }
 
-    private void clearGameBoard(){
+    void clearGameBoard(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 UI.boardButtons[i][j].setText("");
                 UI.boardButtons[i][j].setEnabled(true);
+                UI.boardButtons[i][j].setBackground(new JButton().getBackground());
             }
         }
     }
