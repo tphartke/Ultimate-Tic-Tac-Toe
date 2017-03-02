@@ -16,6 +16,7 @@ class UI extends JFrame {
         super();
         createFrame();
         initialize();
+        frame.setVisible(true);
     }
 
     private void createFrame(){

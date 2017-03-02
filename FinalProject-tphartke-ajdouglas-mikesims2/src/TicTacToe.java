@@ -32,18 +32,18 @@ class TicTacToe {
         return false;
     }
 
-    private boolean verticalVictory(String ticTacToePiece){
+    boolean verticalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
-            if(UI.boardButtons[i][0].getText().matches(ticTacToePiece) && UI.boardButtons[i][1].getText().matches(ticTacToePiece) && UI.boardButtons[i][2].getText().matches(ticTacToePiece)){
+            if(UIButtonMatchesPiece(i, 0, ticTacToePiece) && UIButtonMatchesPiece(i, 1, ticTacToePiece) && UIButtonMatchesPiece(i, 2, ticTacToePiece)){
                 return true;
             }
         }
         return false;
     }
 
-    private boolean horizontalVictory(String ticTacToePiece){
+    boolean horizontalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
-            if(UI.boardButtons[0][i].getText().matches(ticTacToePiece) && UI.boardButtons[1][i].getText().matches(ticTacToePiece) && UI.boardButtons[2][i].getText().matches(ticTacToePiece)){
+            if(UIButtonMatchesPiece(0, i, ticTacToePiece) && UIButtonMatchesPiece(1, i, ticTacToePiece) && UIButtonMatchesPiece(2, i, ticTacToePiece)){
                 return true;
             }
 
@@ -51,13 +51,13 @@ class TicTacToe {
         return false;
     }
 
-    private boolean diagonalVictory(String ticTacToePiece){
+    boolean diagonalVictory(String ticTacToePiece){
 
-        if(UI.boardButtons[0][0].getText().matches(ticTacToePiece) && UI.boardButtons[1][1].getText().matches(ticTacToePiece) && UI.boardButtons[2][2].getText().matches(ticTacToePiece)){
+        if(UIButtonMatchesPiece(0, 0, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 2, ticTacToePiece)){
             return true;
 
         }
-        else if(UI.boardButtons[0][2].getText().matches(ticTacToePiece) && UI.boardButtons[1][1].getText().matches(ticTacToePiece) && UI.boardButtons[2][0].getText().matches(ticTacToePiece)){
+        else if(UIButtonMatchesPiece(0, 2, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 0, ticTacToePiece)){
             return true;
 
         }
@@ -74,5 +74,9 @@ class TicTacToe {
             result = false;
         }
         return result;
+    }
+
+    private boolean UIButtonMatchesPiece(int x, int y, String ticTacToePiece){
+        return UI.boardButtons[x][y].getText().matches(ticTacToePiece);
     }
 }
