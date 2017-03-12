@@ -14,7 +14,7 @@ class Scoreboard {
             UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
         }
     }
-
+//a
     private static void addScoreForOWin() {
         if (TicTacToe.checkForOWin()) {
             Oscore += 1;

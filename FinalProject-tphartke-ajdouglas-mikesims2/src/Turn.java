@@ -8,7 +8,7 @@ class Turn {
         }
         return 'X';
     }
-//a
+
     static int getTurnNumber(){
         return turnNumber;
     }
