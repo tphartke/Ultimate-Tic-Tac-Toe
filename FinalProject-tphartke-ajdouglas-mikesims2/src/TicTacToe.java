@@ -2,12 +2,12 @@ import java.awt.*;
 import static java.lang.Math.pow;
 
 class TicTacToe {
-    private int boardLength = 3;
-    boolean checkForWinCondition(){
+    private static int boardLength = 3;
+    static boolean checkForWinCondition(){
       return checkForOWin() || checkForXWin();
     }
 
-    private boolean checkForOWin(){
+    static boolean checkForOWin(){
         if(verticalVictory("O")){
             return true;
         }
@@ -20,7 +20,7 @@ class TicTacToe {
         return false;
     }
 
-    private boolean checkForXWin(){
+    static boolean checkForXWin(){
         if(verticalVictory("X")){
             return true;
         }
@@ -33,7 +33,7 @@ class TicTacToe {
         return false;
     }
 
-    boolean verticalVictory(String ticTacToePiece){
+    private static boolean verticalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
             if(UIButtonMatchesPiece(i, 0, ticTacToePiece) && UIButtonMatchesPiece(i, 1, ticTacToePiece) && UIButtonMatchesPiece(i, 2, ticTacToePiece)){
                 setBackgroundColorForVerticalVictory(i);
@@ -43,7 +43,7 @@ class TicTacToe {
         return false;
     }
 
-    boolean horizontalVictory(String ticTacToePiece){
+    private static boolean horizontalVictory(String ticTacToePiece){
         for(int i = 0; i < boardLength; i++){
             if(UIButtonMatchesPiece(0, i, ticTacToePiece) && UIButtonMatchesPiece(1, i, ticTacToePiece) && UIButtonMatchesPiece(2, i, ticTacToePiece)){
                 setBackgroundColorForHorizontalVictory(i);
@@ -53,7 +53,7 @@ class TicTacToe {
         return false;
     }
 
-    boolean diagonalVictory(String ticTacToePiece){
+    private static boolean diagonalVictory(String ticTacToePiece){
 
         if(UIButtonMatchesPiece(0, 0, ticTacToePiece) && UIButtonMatchesPiece(1, 1, ticTacToePiece) && UIButtonMatchesPiece(2, 2, ticTacToePiece)){
             UI.boardButtons[0][0].setBackground(Color.green);
@@ -71,11 +71,11 @@ class TicTacToe {
         return false;
     }
 
-    boolean checkTieCondition(){
+    static boolean checkTieCondition(){
         return playingBoardIsFull() && !checkForWinCondition();
     }
 
-    private boolean playingBoardIsFull(){
+    private static boolean playingBoardIsFull(){
         boolean result = true;
         if(Turn.getTurnNumber() <= pow(boardLength, 2)){
             result = false;
@@ -83,17 +83,17 @@ class TicTacToe {
         return result;
     }
 
-    private boolean UIButtonMatchesPiece(int x, int y, String ticTacToePiece){
+    private static boolean UIButtonMatchesPiece(int x, int y, String ticTacToePiece){
         return UI.boardButtons[x][y].getText().matches(ticTacToePiece);
     }
 
-    private void setBackgroundColorForHorizontalVictory(int verticalIndex){
+    private static void setBackgroundColorForHorizontalVictory(int verticalIndex){
         UI.boardButtons[0][verticalIndex].setBackground(Color.green);
         UI.boardButtons[1][verticalIndex].setBackground(Color.green);
         UI.boardButtons[2][verticalIndex].setBackground(Color.green);
     }
 
-    private void setBackgroundColorForVerticalVictory(int horizontalIndex){
+    private static void setBackgroundColorForVerticalVictory(int horizontalIndex){
         UI.boardButtons[horizontalIndex][0].setBackground(Color.green);
         UI.boardButtons[horizontalIndex][1].setBackground(Color.green);
         UI.boardButtons[horizontalIndex][2].setBackground(Color.green);
