@@ -2,7 +2,7 @@ class Turn {
     static int turnNumber = 1;
     private TicTacToe currentGame = new TicTacToe();
 
-    char checkCurrentTurnPiece(){
+    static char checkCurrentTurnPiece(){
         if(turnNumber % 2 == 0){
             return 'O';
         }
