@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.TextArea;
+import java.awt.event.ActionListener;
 
 class UI extends JFrame {
     private JFrame frame = new JFrame("Tic-Tac-Toe");
     static JButton[][] boardButtons = new JButton[3][3];
     static JButton newGameButton = new JButton("New Game");
+    static JButton AIGameButton = new JButton("Play vs. CPU");
     private static final int FRAME_HEIGHT = 500;
     private static final int FRAME_WIDTH = 500;
     private JPanel playingBoard = new JPanel(new GridLayout(3, 3));
@@ -31,6 +33,7 @@ class UI extends JFrame {
         panel.setVisible(true);
         initializeGameBoard();
         initializeStartButton();
+        initializeCPUButton();
         panel.add(playingBoard, BorderLayout.NORTH);
         outputField.setEditable(false);
         panel.add(outputField);
@@ -53,7 +56,13 @@ class UI extends JFrame {
 
     private void initializeStartButton(){
         newGameButton.addActionListener(new myActionListener());
-        newGameButton.setPreferredSize(new Dimension(150, 75));
+        newGameButton.setPreferredSize(new Dimension(50, 50));
         panel.add(newGameButton, BorderLayout.SOUTH);
+    }
+
+    private void initializeCPUButton(){
+        AIGameButton.addActionListener(new myActionListener());
+        AIGameButton.setPreferredSize(new Dimension(50, 50));
+        panel.add(AIGameButton,BorderLayout.EAST);
     }
 }

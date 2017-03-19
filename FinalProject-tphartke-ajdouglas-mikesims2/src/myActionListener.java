@@ -52,6 +52,11 @@ class myActionListener implements ActionListener {
             UI.outputField.append("New game!\n");
 
         }
+        else if(e.getSource() == UI.AIGameButton){
+            clearGameBoard();
+            Turn.turnNumber = 1;
+            UI.outputField.append("Your play first!");
+        }
     }
     private void buttonPress(int x, int y){
         UI.boardButtons[x][y].setText(currentTurnPiece);
