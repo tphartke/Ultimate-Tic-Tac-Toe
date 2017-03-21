@@ -1,4 +1,4 @@
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,57 +10,72 @@ class myActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         turn = new Turn();
         currentTurnPiece = String.valueOf(turn.checkCurrentTurnPiece());
-        for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
-            for(int j = 0; j < UI.BOARD_COLUMNS; j++){
-                for(int k = 0; k < UI.BOARD_SPACES; k++){
-                    if(e.getSource() == UI.boardButtons[i][j][k]){
-                        buttonPress(i, j, k);
-                    }
-                }
-            }
+
+        if(e.getSource() == UI.boardButtons[0][0]){
+            buttonPress(0, 0);
         }
 
-        if(e.getSource() == UI.newGameButton){
+        else if(e.getSource() == UI.boardButtons[0][1]){
+            buttonPress(0, 1);
+        }
+
+        else if(e.getSource() == UI.boardButtons[0][2]){
+            buttonPress(0, 2);
+        }
+
+        else if(e.getSource() == UI.boardButtons[1][0]){
+            buttonPress(1, 0);
+        }
+
+        else if(e.getSource() == UI.boardButtons[1][1]){
+            buttonPress(1, 1);
+        }
+
+        else if(e.getSource() == UI.boardButtons[1][2]){
+            buttonPress(1, 2);
+        }
+
+        else if(e.getSource() == UI.boardButtons[2][0]){
+            buttonPress(2, 0);
+        }
+
+        else if(e.getSource() == UI.boardButtons[2][1]){
+            buttonPress(2, 1);
+        }
+
+        else if(e.getSource() == UI.boardButtons[2][2]){
+           buttonPress(2, 2);
+        }
+        else if(e.getSource() == UI.newGameButton){
             clearGameBoard();
             Turn.turnNumber = 1;
-            UI.outputField.append("\nNew game!\n");
-        }
+            UI.outputField.append("New game!\n");
 
+        }
     }
-    private void buttonPress(int x, int y, int z){
-        UI.boardButtons[x][y][z].setText(currentTurnPiece);
-        //UI.outputField.append("Put " + currentTurnPiece + " in board " + (z+1) + " column " + (y+1) + " row " + (x+1) + ".\n");
-        UI.outputField.append(x + " " + y + " " + z + "\n");
+    private void buttonPress(int x, int y){
+        UI.boardButtons[x][y].setText(currentTurnPiece);
+        UI.outputField.append("Put " + currentTurnPiece + " in column " + (y+1) + " row " + (x+1) + ".\n");
         turn.gameIsWon();
-        UI.boardButtons[x][y][z].setEnabled(false);
+        UI.boardButtons[x][y].setEnabled(false);
         Turn.turnNumber++;
         turn.gameIsTied();
     }
-
     static void makeButtonsUnEnabled(){
-        for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
-            for(int j = 0; j < UI.BOARD_COLUMNS; j++){
-                for(int k = 0; k < UI.BOARD_SPACES; k++){
-                    UI.boardButtons[i][j][k].setEnabled(false);
-                    UI.boardButtons[i][j][k].setBackground(Color.lightGray);
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j < 3; j++){
+                    UI.boardButtons[i][j].setEnabled(false);
                 }
             }
-        }
     }
 
     void clearGameBoard(){
-        for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
-            for(int j = 0; j < UI.BOARD_COLUMNS; j++){
-                for(int k = 0; k < UI.BOARD_SPACES; k++){
-                    clearButton(i, j, k);
-                }
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                UI.boardButtons[i][j].setText("");
+                UI.boardButtons[i][j].setEnabled(true);
+                UI.boardButtons[i][j].setBackground(new JButton().getBackground());
             }
         }
-    }
-
-    private void clearButton(int horizontalIndex, int verticalIndex, int boardIndex){
-        UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setText("");
-        UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setEnabled(true);
-        UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setBackground(Color.white);
     }
 }
