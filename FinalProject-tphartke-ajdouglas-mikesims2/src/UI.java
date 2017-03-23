@@ -1,4 +1,4 @@
-//import javafx.scene.shape.Line;
+import javafx.scene.shape.Line;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +16,7 @@ class UI extends JFrame {
     private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
     private JPanel panel = new JPanel(new BorderLayout());
     static TextArea outputField = new TextArea();
+    static JButton AIGameButton = new JButton("Play vs. CPU");
 
     UI(){
         super();
@@ -42,7 +43,7 @@ class UI extends JFrame {
         frame.add(panel);
     }
 
-    /**private void addLines(){
+    private void addLines(){
         Line line1 = new Line(boardButtons.length/3, 0, boardButtons.length/3, 450);
         Line line2 = new Line(2 * (boardButtons.length)/3, 0, 2 *(boardButtons.length)/3, 450);
 
@@ -50,7 +51,7 @@ class UI extends JFrame {
         Line line4 = new Line(0, 300, boardButtons.length , 300);
 
 
-    }**/
+    }
 
     private void initializeGameBoard(){
         for (int i = 0; i < BOARD_HEIGHT; i++){
