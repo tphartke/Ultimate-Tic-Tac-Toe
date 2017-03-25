@@ -15,8 +15,17 @@ class UI extends JFrame {
     private static final int FRAME_WIDTH = 1200;
     private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
     private JPanel panel = new JPanel(new BorderLayout());
+    private JPanel Player1DisplayPanel = new JPanel(new BorderLayout());
+    private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
+    private JPanel buttonsPanel = new JPanel(new BorderLayout());
+    private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
+    private static JButton leaderboardButton = new JButton("Leaderboard");
+    private static JButton GameFormatButton = new JButton("Ultimate TicTacToe");
     static TextArea outputField = new TextArea();
     static JButton AIGameButton = new JButton("Play vs. CPU");
+    private static JLabel player1Name = new JLabel("Player 1");
+    private static JLabel player2Name = new JLabel("Player 2");
+
 
     UI(){
         super();
@@ -27,19 +36,35 @@ class UI extends JFrame {
 
     private void createFrame(){
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
     private void initialize() {
         panel.setPreferredSize(new Dimension(800, 800));
+
         panel.setVisible(true);
         initializeGameBoard();
         initializeStartButton();
+
+        buttonsPanel.add(AIGameButton, BorderLayout.WEST);
+        buttonsPanel.add(leaderboardButton, BorderLayout.CENTER);
+        buttonsPanel.add(GameFormatButton, BorderLayout.EAST);
         panel.add(playingBoard, BorderLayout.NORTH);
+        panel.add(buttonsPanel, BorderLayout.SOUTH);
+
+        Player1DisplayPanel.add(player1Name);
+        player2DisplayPanel.add(player2Name);
+        panel.add(Player1DisplayPanel, BorderLayout.WEST);
+        panel.add(player2DisplayPanel, BorderLayout.CENTER);
+
+        outputField.setPreferredSize(new Dimension(500,100));
+        gameActionStartPanel.add(outputField, BorderLayout.NORTH);
+        gameActionStartPanel.add(newGameButton, BorderLayout.CENTER);
+        panel.add(gameActionStartPanel, BorderLayout.EAST);
+
         outputField.setEditable(false);
-        panel.add(outputField);
         frame.add(panel);
     }
 
@@ -74,7 +99,6 @@ class UI extends JFrame {
 
     private void initializeStartButton(){
         newGameButton.addActionListener(new myActionListener());
-        newGameButton.setPreferredSize(new Dimension(120, 60));
-        panel.add(newGameButton, BorderLayout.SOUTH);
+        newGameButton.setPreferredSize(new Dimension(120, 80));
     }
 }

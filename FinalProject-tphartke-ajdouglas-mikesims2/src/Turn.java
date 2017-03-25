@@ -14,7 +14,7 @@ class Turn {
     }
 
     boolean gameIsWon(){
-        boolean gameWon = currentGame.checkForWinCondition();
+        boolean gameWon = TicTacToe.checkForWinCondition();
         if(gameWon){
             victoryDialogue();
             myActionListener.makeButtonsUnEnabled();
@@ -23,7 +23,7 @@ class Turn {
     }
 
     boolean gameIsTied(){
-        boolean gameTied = currentGame.checkTieCondition();
+        boolean gameTied = TicTacToe.checkTieCondition();
         if(gameTied){
             tieDialogue();
             myActionListener.makeButtonsUnEnabled();
@@ -34,9 +34,11 @@ class Turn {
     private void victoryDialogue(){
         char winningTurnPiece = checkCurrentTurnPiece();
         UI.outputField.append(winningTurnPiece + " wins!\n");
+        Scoreboard.outputCurrentSessionScoring();
     }
 
     private void tieDialogue(){
         UI.outputField.append("Tie game\n");
+        Scoreboard.outputCurrentSessionScoring();
     }
 }
