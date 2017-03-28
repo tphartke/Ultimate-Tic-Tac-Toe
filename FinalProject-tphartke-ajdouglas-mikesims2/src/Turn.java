@@ -1,6 +1,5 @@
 class Turn {
     static int turnNumber = 1;
-    private TicTacToe currentGame = new TicTacToe();
 
     static char checkCurrentTurnPiece(){
         if(turnNumber % 2 == 0){
