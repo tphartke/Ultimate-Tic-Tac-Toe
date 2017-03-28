@@ -1,35 +1,29 @@
-import java.util.Random;
-
-public class AI {
-
-    private Random sector = new Random();
+class AI {
 
     void doAITurn(){
-        while(Turn.checkCurrentTurnPiece() == 'O'){
-            int horizontal = horizontalOpening();
-            int vertical = verticalOpening();
-            int z = zOpening();
-            AITurn(horizontal, vertical, z);
+        int horizontal = (int)(Math.random()*9);
+        int vertical = (int)(Math.random()*3);
+        int z = (int)(Math.random()*3);
+        while(!UI.boardButtons[horizontal][vertical][z].isEnabled()){
+            horizontal = horizontalOpening();
+            vertical = verticalOpening();
+            z = zOpening();
+            System.out.println(horizontal + " " + vertical + " " + z);
         }
-
+        System.out.println(horizontal + " " + vertical + " " + z);
+        AITurn(horizontal, vertical, z);
     }
 
     private int horizontalOpening(){
-        int minimum = 0;
-        int maximum = 8;
-        return sector.nextInt(maximum - minimum) + minimum;
+        return (int)(Math.random()*9);
     }
 
     private int verticalOpening(){
-        int minimum = 0;
-        int maximum = 2;
-        return sector.nextInt(maximum - minimum) + minimum;
+        return (int)(Math.random()*3);
     }
 
     private int zOpening(){
-        int minimum = 0;
-        int maximum = 2;
-        return sector.nextInt(maximum - minimum) + maximum;
+        return (int)(Math.random()*3);
     }
 
     private void AITurn(int horizontalOpening,int verticalOpening, int zOpening){

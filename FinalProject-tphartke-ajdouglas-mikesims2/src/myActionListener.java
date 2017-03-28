@@ -4,16 +4,17 @@ import java.awt.event.ActionListener;
 
 class myActionListener implements ActionListener {
     private Turn turn;
+    private AI AI;
     private String currentTurnPiece;
     static int verticalBoardIndex;
     static int horizontalBoardIndex;
     static int verticalCoordinate;
     static int zCoordinate;
-    private boolean playingAgainstAI = false;
 
     @Override
     public void actionPerformed(ActionEvent e) {
         turn = new Turn();
+        AI = new AI();
         currentTurnPiece = String.valueOf(Turn.checkCurrentTurnPiece());
         for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
             for(int j = 0; j < UI.BOARD_COLUMNS; j++){
@@ -27,6 +28,7 @@ class myActionListener implements ActionListener {
 
         if(e.getSource() == UI.newGameButton){
             clearGameBoard();
+            UI.playingAgainstAI = false;
             Turn.turnNumber = 1;
             UI.outputField.append("\nNew game!\n");
         }
@@ -34,8 +36,9 @@ class myActionListener implements ActionListener {
         else if(e.getSource() == UI.AIGameButton){
             clearGameBoard();
             Turn.turnNumber = 1;
-            UI.outputField.append("Your play first!");
-            playingAgainstAI = true;
+            UI.playingAgainstAI = true;
+            UI.outputField.append("Your play first!\n");
+
         }
 
     }
@@ -50,6 +53,15 @@ class myActionListener implements ActionListener {
         turn.gameIsTied();
         makeButtonsUnEnabled();
         UltimateTicTacToe.enableGameCoordinates();
+        if(UI.playingAgainstAI){
+            AITurn();
+        }
+    }
+
+    private void AITurn(){
+        if(Turn.checkCurrentTurnPiece() == 'O'){
+            AI.doAITurn();
+        }
     }
 
     private void setIndexes(int x, int y, int z){

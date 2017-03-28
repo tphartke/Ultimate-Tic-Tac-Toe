@@ -36,9 +36,14 @@ class UltimateTicTacToe {
     private static void enableButtons(){
         for(int i = enabledVerticalIndex; i < enabledVerticalIndex + 3; i++){
             for(int j = 0; j < 3; j++){
-                UI.boardButtons[i][enabledHorizontalIndex][j].setEnabled(true);
-                UI.boardButtons[i][enabledHorizontalIndex][j].setBackground(Color.white);
+                enableButton(i, j);
             }
+        }
+    }
+    private static void enableButton(int i, int j) {
+        if (UI.boardButtons[i][enabledHorizontalIndex][j].getText().equals("")) {
+            UI.boardButtons[i][enabledHorizontalIndex][j].setEnabled(true);
+            UI.boardButtons[i][enabledHorizontalIndex][j].setBackground(Color.white);
         }
     }
 }

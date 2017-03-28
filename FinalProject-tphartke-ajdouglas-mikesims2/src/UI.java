@@ -8,6 +8,7 @@ class UI extends JFrame {
     static final int BOARD_HEIGHT = 9;
     static final int BOARD_COLUMNS = 3;
     static final int BOARD_SPACES = 3;
+    static boolean playingAgainstAI;
     static TextArea outputField = new TextArea();
     static JButton AIGameButton = new JButton("Play vs. CPU");
     static JButton[][][] boardButtons = new JButton[BOARD_HEIGHT][BOARD_COLUMNS][BOARD_SPACES];
@@ -48,6 +49,7 @@ class UI extends JFrame {
         panel.setVisible(true);
         initializeGameBoard();
         initializeStartButton();
+        initializeAIButton();
 
         buttonsPanel.add(AIGameButton, BorderLayout.WEST);
         buttonsPanel.add(leaderboardButton, BorderLayout.CENTER);
@@ -102,5 +104,9 @@ class UI extends JFrame {
         newGameButton.addActionListener(new myActionListener());
         newGameButton.setPreferredSize(new Dimension(120, 60));
         panel.add(newGameButton, BorderLayout.SOUTH);
+    }
+
+    private void initializeAIButton(){
+        AIGameButton.addActionListener(new myActionListener());
     }
 }
