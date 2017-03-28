@@ -5,11 +5,16 @@ import java.awt.event.ActionListener;
 class myActionListener implements ActionListener {
     private Turn turn;
     private String currentTurnPiece;
+    static int verticalBoardIndex;
+    static int horizontalBoardIndex;
+    static int verticalCoordinate;
+    static int zCoordinate;
+    private boolean playingAgainstAI = false;
 
     @Override
     public void actionPerformed(ActionEvent e) {
         turn = new Turn();
-        currentTurnPiece = String.valueOf(turn.checkCurrentTurnPiece());
+        currentTurnPiece = String.valueOf(Turn.checkCurrentTurnPiece());
         for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
             for(int j = 0; j < UI.BOARD_COLUMNS; j++){
                 for(int k = 0; k < UI.BOARD_SPACES; k++){
@@ -30,10 +35,12 @@ class myActionListener implements ActionListener {
             clearGameBoard();
             Turn.turnNumber = 1;
             UI.outputField.append("Your play first!");
+            playingAgainstAI = true;
         }
 
     }
     private void buttonPress(int x, int y, int z){
+        setIndexes(x, y, z);
         UI.boardButtons[x][y][z].setText(currentTurnPiece);
         //UI.outputField.append("Put " + currentTurnPiece + " in board " + (z+1) + " column " + (y+1) + " row " + (x+1) + ".\n");
         UI.outputField.append(x + " " + y + " " + z + "\n");
@@ -41,6 +48,15 @@ class myActionListener implements ActionListener {
         UI.boardButtons[x][y][z].setEnabled(false);
         Turn.turnNumber++;
         turn.gameIsTied();
+        makeButtonsUnEnabled();
+        UltimateTicTacToe.enableGameCoordinates();
+    }
+
+    private void setIndexes(int x, int y, int z){
+        verticalBoardIndex = boardFinder.findVerticalCoordinate(x);
+        horizontalBoardIndex = y;
+        verticalCoordinate = x;
+        zCoordinate = z;
     }
 
     static void makeButtonsUnEnabled(){

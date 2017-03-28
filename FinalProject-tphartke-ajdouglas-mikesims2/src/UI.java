@@ -5,18 +5,28 @@ import java.awt.*;
 import java.awt.TextArea;
 
 class UI extends JFrame {
-    static int BOARD_HEIGHT = 9;
-    static int BOARD_COLUMNS = 3;
+    static final int BOARD_HEIGHT = 9;
+    static final int BOARD_COLUMNS = 3;
     static final int BOARD_SPACES = 3;
-    private JFrame frame = new JFrame("Tic-Tac-Toe");
-    static JButton[][][] boardButtons = new JButton[BOARD_HEIGHT][BOARD_COLUMNS][BOARD_SPACES];
-    static JButton newGameButton = new JButton("New Game");
-    private static final int FRAME_HEIGHT = 700;
-    private static final int FRAME_WIDTH = 1200;
-    private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
-    private JPanel panel = new JPanel(new BorderLayout());
     static TextArea outputField = new TextArea();
     static JButton AIGameButton = new JButton("Play vs. CPU");
+    static JButton[][][] boardButtons = new JButton[BOARD_HEIGHT][BOARD_COLUMNS][BOARD_SPACES];
+    static JButton newGameButton = new JButton("New Game");
+
+    private static JButton leaderboardButton = new JButton("Leaderboard");
+    private static JButton GameFormatButton = new JButton("Ultimate TicTacToe");
+    private static JLabel player1Name = new JLabel("Player 1");
+    private static JLabel player2Name = new JLabel("Player 2");
+    private static final int FRAME_HEIGHT = 700;
+    private static final int FRAME_WIDTH = 1200;
+    private JFrame frame = new JFrame("Tic-Tac-Toe");
+    private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
+    private JPanel panel = new JPanel(new BorderLayout());
+    private JPanel Player1DisplayPanel = new JPanel(new BorderLayout());
+    private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
+    private JPanel buttonsPanel = new JPanel(new BorderLayout());
+    private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
+
 
     UI(){
         super();
@@ -34,12 +44,28 @@ class UI extends JFrame {
 
     private void initialize() {
         panel.setPreferredSize(new Dimension(800, 800));
+
         panel.setVisible(true);
         initializeGameBoard();
         initializeStartButton();
+
+        buttonsPanel.add(AIGameButton, BorderLayout.WEST);
+        buttonsPanel.add(leaderboardButton, BorderLayout.CENTER);
+        buttonsPanel.add(GameFormatButton, BorderLayout.EAST);
         panel.add(playingBoard, BorderLayout.NORTH);
+        panel.add(buttonsPanel, BorderLayout.SOUTH);
+
+        Player1DisplayPanel.add(player1Name);
+        player2DisplayPanel.add(player2Name);
+        panel.add(Player1DisplayPanel, BorderLayout.WEST);
+        panel.add(player2DisplayPanel, BorderLayout.CENTER);
+
+        outputField.setPreferredSize(new Dimension(500,100));
+        gameActionStartPanel.add(outputField, BorderLayout.NORTH);
+        gameActionStartPanel.add(newGameButton, BorderLayout.CENTER);
+        panel.add(gameActionStartPanel, BorderLayout.EAST);
+
         outputField.setEditable(false);
-        panel.add(outputField);
         frame.add(panel);
     }
 
