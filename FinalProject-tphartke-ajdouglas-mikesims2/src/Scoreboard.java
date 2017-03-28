@@ -5,13 +5,13 @@ class Scoreboard {
     static void outputCurrentSessionScoring() {
         addScoreForXWin();
         addScoreForOWin();
-        repeatScoreForTie();
     }
 
     private static void addScoreForXWin() {
         if (TicTacToe.checkForXWin()) {
             Xscore += 1;
             UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
+            UI.player1Score.setText(String.valueOf(Xscore));
         }
     }
 
@@ -19,11 +19,8 @@ class Scoreboard {
         if (TicTacToe.checkForOWin()) {
             Oscore += 1;
             UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
-        }
-    }
-    private static void repeatScoreForTie() {
-        if (TicTacToe.checkTieCondition()) {
-            UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
+            UI.player2Score.setText(String.valueOf(Oscore));
         }
     }
 }
+

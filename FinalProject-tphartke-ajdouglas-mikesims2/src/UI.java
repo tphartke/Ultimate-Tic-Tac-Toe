@@ -13,11 +13,12 @@ class UI extends JFrame {
     static JButton AIGameButton = new JButton("Play vs. CPU");
     static JButton[][][] boardButtons = new JButton[BOARD_HEIGHT][BOARD_COLUMNS][BOARD_SPACES];
     static JButton newGameButton = new JButton("New Game");
+    static JLabel player1Score = new JLabel("0");
+    static JLabel player2Score = new JLabel("0");
 
     private static JButton leaderboardButton = new JButton("Leaderboard");
-    private static JButton GameFormatButton = new JButton("Ultimate TicTacToe");
-    private static JLabel player1Name = new JLabel("Player 1");
-    private static JLabel player2Name = new JLabel("Player 2");
+    private static JTextField player1Name = new JTextField("Player 1");
+    private static JTextField player2Name = new JTextField("Player 2");
     private static final int FRAME_HEIGHT = 700;
     private static final int FRAME_WIDTH = 1200;
     private JFrame frame = new JFrame("Tic-Tac-Toe");
@@ -27,6 +28,7 @@ class UI extends JFrame {
     private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
+
 
 
     UI(){
@@ -52,13 +54,24 @@ class UI extends JFrame {
         initializeAIButton();
 
         buttonsPanel.add(AIGameButton, BorderLayout.WEST);
-        buttonsPanel.add(leaderboardButton, BorderLayout.CENTER);
-        buttonsPanel.add(GameFormatButton, BorderLayout.EAST);
+        buttonsPanel.add(leaderboardButton, BorderLayout.EAST);
         panel.add(playingBoard, BorderLayout.NORTH);
         panel.add(buttonsPanel, BorderLayout.SOUTH);
 
-        Player1DisplayPanel.add(player1Name);
-        player2DisplayPanel.add(player2Name);
+        Player1DisplayPanel.add(player1Name, BorderLayout.NORTH);
+        Player1DisplayPanel.add(player1Score, BorderLayout.CENTER);
+        player1Score.setHorizontalAlignment(SwingConstants.CENTER);
+        player1Score.setVerticalAlignment(SwingConstants.CENTER);
+
+        Player1DisplayPanel.setPreferredSize(new Dimension(300, 100));
+        Player1DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15,10,10,10));
+        player2DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15,10,10,10));
+
+        player2DisplayPanel.add(player2Name, BorderLayout.NORTH);
+        player2DisplayPanel.add(player2Score, BorderLayout.CENTER);
+        player2Score.setHorizontalAlignment(SwingConstants.CENTER);
+        player2Score.setVerticalAlignment(SwingConstants.CENTER);
+
         panel.add(Player1DisplayPanel, BorderLayout.WEST);
         panel.add(player2DisplayPanel, BorderLayout.CENTER);
 
