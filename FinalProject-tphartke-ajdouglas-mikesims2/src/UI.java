@@ -10,17 +10,18 @@ class UI extends JFrame {
     static final int BOARD_SPACES = 3;
     static boolean playingAgainstAI;
     static TextArea outputField = new TextArea();
-    static JButton AIGameButton = new JButton("Play vs. CPU");
     static JButton[][][] boardButtons = new JButton[BOARD_HEIGHT][BOARD_COLUMNS][BOARD_SPACES];
-    static JButton newGameButton = new JButton("New Game");
     static JLabel player1Score = new JLabel("0");
     static JLabel player2Score = new JLabel("0");
+    static JButton newGameButton = new JButton("New Game");
+    static JButton AIGameButton = new JButton("Play vs. CPU");
 
     private static JButton leaderboardButton = new JButton("Leaderboard");
     private static JTextField player1Name = new JTextField("Player 1");
     private static JTextField player2Name = new JTextField("Player 2");
     private static final int FRAME_HEIGHT = 700;
     private static final int FRAME_WIDTH = 1200;
+
     private JFrame frame = new JFrame("Tic-Tac-Toe");
     private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
     private JPanel panel = new JPanel(new BorderLayout());
@@ -28,8 +29,6 @@ class UI extends JFrame {
     private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
-
-
 
     UI(){
         super();
@@ -46,18 +45,39 @@ class UI extends JFrame {
     }
 
     private void initialize() {
-        panel.setPreferredSize(new Dimension(800, 800));
-
-        panel.setVisible(true);
+        initializePanel();
         initializeGameBoard();
         initializeStartButton();
         initializeAIButton();
+        initializeScoreboard();
+        initializeOutputfield();
+        addComponentsToPanel();
+        frame.add(panel);
+    }
 
-        buttonsPanel.add(AIGameButton, BorderLayout.WEST);
-        buttonsPanel.add(leaderboardButton, BorderLayout.EAST);
-        panel.add(playingBoard, BorderLayout.NORTH);
-        panel.add(buttonsPanel, BorderLayout.SOUTH);
+    private void addLines(){
+        Line line1 = new Line(boardButtons.length/3, 0, boardButtons.length/3, 450);
+        Line line2 = new Line(2 * (boardButtons.length)/3, 0, 2 *(boardButtons.length)/3, 450);
 
+        Line line3 = new Line(0, 150, boardButtons.length , 150);
+        Line line4 = new Line(0, 300, boardButtons.length , 300);
+    }
+
+    private void initializePanel(){
+        panel.setPreferredSize(new Dimension(800, 800));
+        panel.setVisible(true);
+    }
+    private void initializeGameBoard(){
+        for (int i = 0; i < BOARD_HEIGHT; i++){
+            for (int j = 0; j < BOARD_COLUMNS; j++){
+                for(int k = 0; k < BOARD_SPACES; k++){
+                    initializeGameButton(i, j, k);
+                }
+            }
+        }
+    }
+
+    private void initializeScoreboard(){
         Player1DisplayPanel.add(player1Name, BorderLayout.NORTH);
         Player1DisplayPanel.add(player1Score, BorderLayout.CENTER);
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,34 +94,17 @@ class UI extends JFrame {
 
         panel.add(Player1DisplayPanel, BorderLayout.WEST);
         panel.add(player2DisplayPanel, BorderLayout.CENTER);
+    }
 
-        outputField.setPreferredSize(new Dimension(500,100));
+    private void addComponentsToPanel(){
+        buttonsPanel.add(AIGameButton, BorderLayout.WEST);
+        buttonsPanel.add(leaderboardButton, BorderLayout.EAST);
+        panel.add(playingBoard, BorderLayout.NORTH);
+        panel.add(buttonsPanel, BorderLayout.SOUTH);
+        panel.add(gameActionStartPanel, BorderLayout.EAST);
         gameActionStartPanel.add(outputField, BorderLayout.NORTH);
         gameActionStartPanel.add(newGameButton, BorderLayout.CENTER);
-        panel.add(gameActionStartPanel, BorderLayout.EAST);
 
-        outputField.setEditable(false);
-        frame.add(panel);
-    }
-
-    private void addLines(){
-        Line line1 = new Line(boardButtons.length/3, 0, boardButtons.length/3, 450);
-        Line line2 = new Line(2 * (boardButtons.length)/3, 0, 2 *(boardButtons.length)/3, 450);
-
-        Line line3 = new Line(0, 150, boardButtons.length , 150);
-        Line line4 = new Line(0, 300, boardButtons.length , 300);
-
-
-    }
-
-    private void initializeGameBoard(){
-        for (int i = 0; i < BOARD_HEIGHT; i++){
-            for (int j = 0; j < BOARD_COLUMNS; j++){
-                for(int k = 0; k < BOARD_SPACES; k++){
-                    initializeGameButton(i, j, k);
-                }
-            }
-        }
     }
     private void initializeGameButton(int i, int j, int k){
         boardButtons[i][j][k] = new JButton();
@@ -117,6 +120,11 @@ class UI extends JFrame {
         newGameButton.addActionListener(new myActionListener());
         newGameButton.setPreferredSize(new Dimension(120, 60));
         panel.add(newGameButton, BorderLayout.SOUTH);
+    }
+
+    private void initializeOutputfield(){
+        outputField.setPreferredSize(new Dimension(500,100));
+        outputField.setEditable(false);
     }
 
     private void initializeAIButton(){

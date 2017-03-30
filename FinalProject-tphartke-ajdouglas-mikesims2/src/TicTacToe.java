@@ -92,6 +92,7 @@ class TicTacToe {
     }
 
     private static boolean checkDiagonalVictoryCoordinates(String ticTacToePiece){
+
         boolean bottomright = UIButtonMatchesPiece(verticalBoardIndex+2, horizontalBoardIndex, 2, ticTacToePiece);
         boolean middle = UIButtonMatchesPiece(verticalBoardIndex+1, horizontalBoardIndex, 1, ticTacToePiece);
         boolean topleft = UIButtonMatchesPiece(verticalBoardIndex, horizontalBoardIndex, 0, ticTacToePiece);
