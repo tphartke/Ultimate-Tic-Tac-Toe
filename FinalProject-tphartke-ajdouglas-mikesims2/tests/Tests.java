@@ -12,6 +12,27 @@ public class Tests {
         @SuppressWarnings("Variable 'ui' is never used")
         UI ui = new UI(); //a UI must be initialized in order for the tests to run properly
     }
+
+    @Test
+    public void testPlayerOneScoreboard() {
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertEquals(UI.player1Score.getText(), "6");
+    }
+
+    @Test
+    public void testPlayerTwoScoreboard() {
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertEquals(UI.player1Score.getText(), "3");
+    }
     @Test
     public void testWriteXToBoardLocation(){
         UI.boardButtons[0][0][0].doClick();
