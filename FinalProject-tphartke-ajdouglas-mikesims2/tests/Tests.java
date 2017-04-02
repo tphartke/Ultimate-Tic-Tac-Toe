@@ -3,13 +3,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Tests {
-    private TicTacToe tictactoe;
     private myActionListener listener;
 
     @Before
     public void setUp(){
         Turn.turnNumber = 1;
-        tictactoe = new TicTacToe();
         listener = new myActionListener();
         @SuppressWarnings("Variable 'ui' is never used")
         UI ui = new UI(); //a UI must be initialized in order for the tests to run properly
@@ -22,183 +20,177 @@ public class Tests {
 
     @Test
     public void testWriteOToBoardLocation(){
-        UI.boardButtons[1][0][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        Assert.assertEquals(UI.boardButtons[0][0][0].getText(), "O");
+        UI.boardButtons[1][0][0].doClick();
+        Assert.assertEquals(UI.boardButtons[1][0][0].getText(), "O");
     }
 
     @Test
     public void testXDiagonalWin1(){
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.diagonalVictory("X"));
+        Assert.assertTrue(TicTacToe.diagonalVictory("X"));
     }
 
     @Test
     public void testXDiagonalWin2(){
+        UI.boardButtons[0][0][2].doClick();
         UI.boardButtons[0][2][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        Assert.assertTrue(tictactoe.diagonalVictory("X"));
+        Assert.assertTrue(TicTacToe.diagonalVictory("X"));
     }
 
     @Test
     public void testODiagonalWin1(){
-        UI.boardButtons[0][2][0].doClick();
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.diagonalVictory("O"));
+        Assert.assertTrue(TicTacToe.diagonalVictory("O"));
     }
 
     @Test
     public void testODiagonalWin2(){
-        UI.boardButtons[2][2][0].doClick();
-        UI.boardButtons[0][2][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
+        UI.boardButtons[6][1][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        Assert.assertTrue(tictactoe.diagonalVictory("O"));
+        UI.boardButtons[6][0][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[0][0][2].doClick();
+        Assert.assertTrue(TicTacToe.diagonalVictory("O"));
     }
 
     @Test
     public void testXVerticalVictory1(){
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[1][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("X"));
+        UI.boardButtons[0][0][2].doClick();
+        UI.boardButtons[0][2][0].doClick();
+        UI.boardButtons[0][0][1].doClick();
+        UI.boardButtons[0][1][0].doClick();
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertTrue(TicTacToe.verticalVictory("X"));
     }
 
     @Test
     public void testXVerticalVictory2(){
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[0][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("X"));
+        UI.boardButtons[1][0][2].doClick();
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[1][0][0].doClick();
+        Assert.assertTrue(TicTacToe.verticalVictory("X"));
     }
 
     @Test
     public void testXVerticalVictory3(){
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[2][0][1].doClick();
+        UI.boardButtons[6][1][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("X"));
+        Assert.assertTrue(TicTacToe.verticalVictory("X"));
     }
 
     @Test
     public void testOVerticalVictory1(){
+        UI.boardButtons[3][0][0].doClick();
+        UI.boardButtons[0][0][2].doClick();
+        UI.boardButtons[0][2][0].doClick();
+        UI.boardButtons[0][0][1].doClick();
+        UI.boardButtons[0][1][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[1][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("O"));
+        Assert.assertTrue(TicTacToe.verticalVictory("O"));
     }
 
     @Test
     public void testOVerticalVictory2(){
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[0][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("O"));
+        UI.boardButtons[3][0][0].doClick();
+        UI.boardButtons[1][0][2].doClick();
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[1][0][0].doClick();
+        Assert.assertTrue(TicTacToe.verticalVictory("O"));
     }
 
     @Test
     public void testOVerticalVictory3(){
-        UI.boardButtons[1][1][0].doClick();
+        UI.boardButtons[3][0][0].doClick();
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[2][0][1].doClick();
+        UI.boardButtons[6][1][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.verticalVictory("O"));
+        Assert.assertTrue(TicTacToe.verticalVictory("O"));
     }
 
     @Test
     public void testXHorizontalVictory1(){
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("X"));
+        UI.boardButtons[6][0][0].doClick();
+        UI.boardButtons[1][0][0].doClick();
+        UI.boardButtons[3][0][0].doClick();
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("X"));
     }
 
     @Test
     public void testXHorizontalVictory2(){
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("X"));
+        UI.boardButtons[2][0][1].doClick();
+        UI.boardButtons[6][1][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[0][0][1].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("X"));
     }
 
     @Test
     public void testXHorizontalVictory3(){
-        UI.boardButtons[0][2][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[1][2][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("X"));
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][2].doClick();
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[0][0][2].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("X"));
     }
 
     @Test
     public void testOHorizontalVictory1(){
-        UI.boardButtons[2][2][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
+        UI.boardButtons[6][2][0].doClick();
         UI.boardButtons[2][0][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("O"));
+        UI.boardButtons[6][0][0].doClick();
+        UI.boardButtons[1][0][0].doClick();
+        UI.boardButtons[3][0][0].doClick();
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("O"));
     }
 
     @Test
     public void testOHorizontalVictory2(){
-        UI.boardButtons[2][2][0].doClick();
-        UI.boardButtons[0][1][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][1][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("O"));
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[2][0][1].doClick();
+        UI.boardButtons[6][1][0].doClick();
+        UI.boardButtons[1][0][1].doClick();
+        UI.boardButtons[3][1][0].doClick();
+        UI.boardButtons[0][0][1].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("O"));
     }
 
     @Test
     public void testOHorizontalVictory3(){
-        UI.boardButtons[1][1][0].doClick();
-        UI.boardButtons[0][2][0].doClick();
-        UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[1][2][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[2][2][0].doClick();
-        Assert.assertTrue(tictactoe.horizontalVictory("O"));
-    }
-
-    @Test
-    public void testTieCondition(){
-        Turn.turnNumber = 10;
-        Assert.assertTrue(tictactoe.checkTieCondition());
+        UI.boardButtons[6][1][0].doClick();
+        UI.boardButtons[2][0][2].doClick();
+        UI.boardButtons[6][2][0].doClick();
+        UI.boardButtons[1][0][2].doClick();
+        UI.boardButtons[3][2][0].doClick();
+        UI.boardButtons[0][0][2].doClick();
+        Assert.assertTrue(TicTacToe.horizontalVictory("O"));
     }
 
     @Test

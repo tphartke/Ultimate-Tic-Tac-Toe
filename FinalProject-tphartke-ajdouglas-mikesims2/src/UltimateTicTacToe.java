@@ -13,6 +13,7 @@ class UltimateTicTacToe {
         enabledHorizontalIndex = zCoordinate;
         enableButtons();
     }
+
     private static int getEnabledVerticalIndex(){
         int index;
         if(verticalCoordinate == verticalBoardIndex){
@@ -40,6 +41,7 @@ class UltimateTicTacToe {
             }
         }
     }
+
     private static void enableButton(int i, int j) {
         if (UI.boardButtons[i][enabledHorizontalIndex][j].getText().equals("")) {
             UI.boardButtons[i][enabledHorizontalIndex][j].setEnabled(true);
