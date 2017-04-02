@@ -37,6 +37,7 @@ class myActionListener implements ActionListener {
             clearGameBoard();
             Turn.turnNumber = 1;
             UI.playingAgainstAI = true;
+            UI.player2Name.setText("AI");
             UI.outputField.append("Your play first!\n");
 
         }
@@ -45,8 +46,7 @@ class myActionListener implements ActionListener {
     private void buttonPress(int x, int y, int z){
         setIndexes(x, y, z);
         UI.boardButtons[x][y][z].setText(currentTurnPiece);
-        //UI.outputField.append("Put " + currentTurnPiece + " in board " + (z+1) + " column " + (y+1) + " row " + (x+1) + ".\n");
-        UI.outputField.append(x + " " + y + " " + z + "\n");
+        UI.outputField.append(Turn.getCurrentPlayer(currentTurnPiece) +" put " + currentTurnPiece + " in coordinate " + x + " " + y + " " + z + "\n");
         turn.gameIsWon();
         UI.boardButtons[x][y][z].setEnabled(false);
         Turn.turnNumber++;
@@ -59,7 +59,7 @@ class myActionListener implements ActionListener {
     }
 
     private void AITurn(){
-        if(Turn.checkCurrentTurnPiece() == 'O'){
+        if(Turn.checkCurrentTurnPiece().equals("O")){
             AI.doAITurn();
         }
     }

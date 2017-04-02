@@ -15,10 +15,10 @@ class UI extends JFrame {
     static JLabel player2Score = new JLabel("0");
     static JButton newGameButton = new JButton("New Game");
     static JButton AIGameButton = new JButton("Play vs. CPU");
+    static JTextField player1Name = new JTextField("Player 1");
+    static JTextField player2Name = new JTextField("Player 2");
 
     private static JButton leaderboardButton = new JButton("Leaderboard");
-    private static JTextField player1Name = new JTextField("Player 1");
-    private static JTextField player2Name = new JTextField("Player 2");
     private static final int FRAME_HEIGHT = 700;
     private static final int FRAME_WIDTH = 1200;
 

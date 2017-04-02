@@ -1,11 +1,11 @@
 class Turn {
     static int turnNumber = 1;
 
-    static char checkCurrentTurnPiece(){
+    static String checkCurrentTurnPiece(){
         if(turnNumber % 2 == 0){
-            return 'O';
+            return "O";
         }
-        return 'X';
+        return "X";
     }
 
     static int getTurnNumber(){
@@ -29,9 +29,18 @@ class Turn {
     }
 
     private void victoryDialogue(){
-        char winningTurnPiece = checkCurrentTurnPiece();
-        UI.outputField.append(winningTurnPiece + " wins!\n");
+        String winningTurnPiece = checkCurrentTurnPiece();
+        UI.outputField.append(getCurrentPlayer(winningTurnPiece) + " wins!\n");
         Scoreboard.outputCurrentSessionScoring();
+    }
+
+    static String getCurrentPlayer(String CurrentTurnPiece){
+        if(CurrentTurnPiece.equals("X")){
+            return UI.player1Name.getText();
+        }
+        else{
+            return UI.player2Name.getText();
+        }
     }
 
     private void tieDialogue(){
