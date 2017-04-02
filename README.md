@@ -1,9 +1,9 @@
 # final-proj_Tim_Ashley_Mike
-Ultimate Tic-Tac-Toe game v. 0.0.2
+Ultimate Tic-Tac-Toe game v0.2.0
 
 Authors:
-Timmy Hartke
-Ashley Douglas
+Timmy Hartke,
+Ashley Douglas,
 Mike Sims
 
 We are creating this project for our CS222 class. This is the second iteration of the project. Some new features of this iteration include:
