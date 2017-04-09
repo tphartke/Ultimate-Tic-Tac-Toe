@@ -18,7 +18,7 @@ class UI extends JFrame {
     static JTextField player1Name = new JTextField("Player 1");
     static JTextField player2Name = new JTextField("Player 2");
 
-    private static JButton leaderboardButton = new JButton("Leaderboard");
+    static JButton leaderboardButton = new JButton("Leaderboard");
     private static final int FRAME_HEIGHT = 700;
     private static final int FRAME_WIDTH = 1200;
 
@@ -51,6 +51,7 @@ class UI extends JFrame {
         initializeAIButton();
         initializeScoreboard();
         initializeOutputfield();
+        initializeLeaderboardButton();
         addComponentsToPanel();
         frame.add(panel);
     }
@@ -130,4 +131,9 @@ class UI extends JFrame {
     private void initializeAIButton(){
         AIGameButton.addActionListener(new myActionListener());
     }
+
+    private void initializeLeaderboardButton() {
+        leaderboardButton.addActionListener(new myActionListener());
+    }
+
 }
