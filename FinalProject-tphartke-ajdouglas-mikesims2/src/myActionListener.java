@@ -44,7 +44,7 @@ class myActionListener implements ActionListener {
         }
 
         else if(e.getSource() == UI.leaderboardButton) {
-            this.createLeaderboardFrame();
+            UI.createLeaderboardFrame();
         }
 
     }
@@ -118,7 +118,4 @@ class myActionListener implements ActionListener {
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setBackground(Color.white);
     }
 
-    private void createLeaderboardFrame() {
-        new SecondPanel();
-    }
 }
