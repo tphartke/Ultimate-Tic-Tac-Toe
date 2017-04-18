@@ -30,6 +30,7 @@ class myActionListener implements ActionListener {
             clearGameBoard();
             UI.playingAgainstAI = false;
             Turn.turnNumber = 1;
+            UltimateTicTacToe.clearUltimateTicTacToeGame();
             UI.outputField.append("\nNew game!\n");
         }
 
@@ -46,13 +47,26 @@ class myActionListener implements ActionListener {
     private void buttonPress(int x, int y, int z){
         setIndexes(x, y, z);
         UI.boardButtons[x][y][z].setText(currentTurnPiece);
+        UI.boardButtons[x][y][z].setBackground(Color.blue);
         UI.outputField.append(Turn.getCurrentPlayer(currentTurnPiece) +" put " + currentTurnPiece + " in coordinate " + x + " " + y + " " + z + "\n");
         turn.gameIsWon();
         UI.boardButtons[x][y][z].setEnabled(false);
         Turn.turnNumber++;
-        turn.gameIsTied();
+        turn.checkForGlobalVictory();
         makeButtonsUnEnabled();
+        if(!UltimateTicTacToeVictoryConditions.checkForWinCondition()){
+            setUpForNextTurn();
+        }
+    }
+
+    private void setUpForNextTurn(){
+        turn.checkForGlobalTie();
         UltimateTicTacToe.enableGameCoordinates();
+        UltimateTicTacToe.checkForLocalVictory();
+        turn.gameIsTied();
+        if(!UltimateTicTacToe.SpaceInBoard()){
+            UltimateTicTacToe.enableButtonsTieCondition();
+        }
         if(UI.playingAgainstAI){
             AITurn();
         }
@@ -75,8 +89,10 @@ class myActionListener implements ActionListener {
         for(int i = 0; i < UI.BOARD_HEIGHT; i++){//iterate through the three dimensional array
             for(int j = 0; j < UI.BOARD_COLUMNS; j++){
                 for(int k = 0; k < UI.BOARD_SPACES; k++){
-                    UI.boardButtons[i][j][k].setEnabled(false);
-                    UI.boardButtons[i][j][k].setBackground(Color.lightGray);
+                    if (UI.boardButtons[i][j][k].getText().equals("")){
+                        UI.boardButtons[i][j][k].setEnabled(false);
+                        UI.boardButtons[i][j][k].setBackground(Color.lightGray);
+                    }
                 }
             }
         }

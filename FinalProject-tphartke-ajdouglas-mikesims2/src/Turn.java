@@ -21,7 +21,7 @@ class Turn {
     }
 
     void gameIsTied(){
-        boolean gameTied = TicTacToe.checkTieCondition();
+        boolean gameTied = UltimateTicTacToe.checkForLocalTie();
         if(gameTied){
             tieDialogue();
             myActionListener.makeButtonsUnEnabled();
@@ -30,8 +30,7 @@ class Turn {
 
     private void victoryDialogue(){
         String winningTurnPiece = checkCurrentTurnPiece();
-        UI.outputField.append(getCurrentPlayer(winningTurnPiece) + " wins!\n");
-        Scoreboard.outputCurrentSessionScoring();
+        UI.outputField.append(getCurrentPlayer(winningTurnPiece) + " wins board " + myActionListener.verticalBoardIndex + " " + myActionListener.horizontalBoardIndex + "\n");
     }
 
     static String getCurrentPlayer(String CurrentTurnPiece){
@@ -44,7 +43,24 @@ class Turn {
     }
 
     private void tieDialogue(){
-        UI.outputField.append("Tie game\n");
+        UI.outputField.append("Tie game in board " + myActionListener.verticalBoardIndex + " " + myActionListener.horizontalBoardIndex + "\n");
         Scoreboard.outputCurrentSessionScoring();
+    }
+
+    void checkForGlobalVictory(){
+        boolean globalVictory = UltimateTicTacToeVictoryConditions.checkForWinCondition();
+        String winningTurnPiece = checkCurrentTurnPiece();
+        if(globalVictory){
+            UI.outputField.append(getCurrentPlayer(winningTurnPiece) + " wins!\n");
+            Scoreboard.outputCurrentSessionScoring();
+        }
+    }
+
+    void checkForGlobalTie(){
+        boolean globalTie = UltimateTicTacToeVictoryConditions.checkForGlobalTie();
+        if(globalTie){
+            UI.outputField.append("Tie game!\n");
+
+        }
     }
 }

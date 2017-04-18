@@ -55,14 +55,6 @@ class UI extends JFrame {
         frame.add(panel);
     }
 
-    private void addLines(){
-        Line line1 = new Line(boardButtons.length/3, 0, boardButtons.length/3, 450);
-        Line line2 = new Line(2 * (boardButtons.length)/3, 0, 2 *(boardButtons.length)/3, 450);
-
-        Line line3 = new Line(0, 150, boardButtons.length , 150);
-        Line line4 = new Line(0, 300, boardButtons.length , 300);
-    }
-
     private void initializePanel(){
         panel.setPreferredSize(new Dimension(800, 800));
         panel.setVisible(true);

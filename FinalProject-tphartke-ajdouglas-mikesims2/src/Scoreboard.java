@@ -8,7 +8,7 @@ class Scoreboard {
     }
 
     private static void addScoreForXWin() {
-        if (TicTacToe.checkForXWin()) {
+        if (UltimateTicTacToeVictoryConditions.checkForXWin()) {
             Xscore += 1;
             UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
             UI.player1Score.setText(String.valueOf(Xscore));
@@ -16,7 +16,7 @@ class Scoreboard {
     }
 
     private static void addScoreForOWin() {
-        if (TicTacToe.checkForOWin()) {
+        if (UltimateTicTacToeVictoryConditions.checkForOWin()) {
             Oscore += 1;
             UI.outputField.append("X score\t" + Xscore + "\t" + "O score\t" + Oscore + "\n");
             UI.player2Score.setText(String.valueOf(Oscore));
