@@ -43,6 +43,10 @@ class myActionListener implements ActionListener {
 
         }
 
+        else if(e.getSource() == UI.leaderboardButton) {
+            this.createLeaderboardFrame();
+        }
+
     }
     private void buttonPress(int x, int y, int z){
         setIndexes(x, y, z);
@@ -112,5 +116,9 @@ class myActionListener implements ActionListener {
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setText("");
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setEnabled(true);
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setBackground(Color.white);
+    }
+
+    private void createLeaderboardFrame() {
+        new SecondPanel();
     }
 }

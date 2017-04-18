@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class SecondPanel extends JFrame{
+class SecondPanel extends JFrame{
     private JTextArea playerScores;
     private JPanel panel1;
 
