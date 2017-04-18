@@ -5,7 +5,7 @@ import java.io.IOException;
 
 class LeaderboardReader {
 
-    private static final String FILENAME = "src/Files/leaderboardStorage.txt";
+    private static final String FILENAME = "FinalProject-tphartke-ajdouglas-mikesims2/Files/leaderboardStorage.txt";
 
     static String scoreboardReader() throws IOException {
 

@@ -132,4 +132,5 @@ class UI extends JFrame {
     static void createLeaderboardFrame() {
         new SecondPanel();
     }
+
 }
