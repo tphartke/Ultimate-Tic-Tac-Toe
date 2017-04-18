@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.IOException;
 import javax.swing.*;
 
 class UI extends JFrame {
@@ -25,7 +26,7 @@ class UI extends JFrame {
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
 
-    UI() {
+    UI() throws IOException {
         createFrame();
         initialize();
         frame.setVisible(true);
@@ -38,7 +39,7 @@ class UI extends JFrame {
         frame.setVisible(true);
     }
 
-    private void initialize() {
+    private void initialize() throws IOException {
         initializePanel();
         initializeButtons();
         initializeOutputfield();
@@ -46,7 +47,7 @@ class UI extends JFrame {
         frame.add(panel);
     }
 
-    private void initializeButtons(){
+    private void initializeButtons() throws IOException {
         initializeGameBoard();
         initializeStartButton();
         initializeAIButton();
@@ -70,7 +71,8 @@ class UI extends JFrame {
 
     }
 
-    private void initializeScoreboard() {
+    private void initializeScoreboard() throws IOException {
+        LeaderboardReader.scoreboardReader();
         initializePlayerDisplayPanels();
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
         player1Score.setVerticalAlignment(SwingConstants.CENTER);

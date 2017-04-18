@@ -2,11 +2,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class Tests {
     private myActionListener listener;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         Turn.turnNumber = 1;
         listener = new myActionListener();
         @SuppressWarnings("Variable 'ui' is never used")

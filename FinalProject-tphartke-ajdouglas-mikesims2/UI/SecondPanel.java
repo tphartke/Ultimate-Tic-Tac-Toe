@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-
 
 class SecondPanel extends JFrame {
 
@@ -37,10 +35,6 @@ class SecondPanel extends JFrame {
     }
 
     private void addScoreboard() {
-        try {
-            scoreboardData.append(LeaderboardReader.scoreboardReader());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        scoreboardData.append(LeaderboardReader.playerList.toString());
     }
 }

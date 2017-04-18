@@ -1,1 +1,5 @@
-This is a test document.h
+Player  Wins    Losses  Ties    Total Games<\p>
+Timmy   0       0       0       0       0<\p>
+AI      0       0       0       0       0<\p>
+Player1 0       0       0       0       0<\p>
+Player2 0       0       0       0       0<\p>
