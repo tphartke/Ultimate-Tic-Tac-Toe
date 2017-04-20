@@ -41,79 +41,121 @@ class AI {
     }
 
     private void hardAI(){
-        checkMiddleOfBoardAvailable();
-        checkHorizontalVictoryClose();
-        checkVerticalVictoryClose();
-        checkDiagonalVictoryClose();
+        if(UltimateTicTacToe.SpaceInBoard()){
+           doHardAITurn();
+        }
+        else{
+            doAITurn();
+        }
+    }
+
+    private void doHardAITurn(){
+        if(checkMiddleOfBoardAvailable()){
+            return;
+        }
+        else if(checkHorizontalVictoryClose()){
+            return;
+        }
+        else if(checkVerticalVictoryClose()){
+            return;
+        }
+        else if(checkDiagonalVictoryClose()){
+            return;
+        }
         doAITurn();
     }
-    private void checkMiddleOfBoardAvailable(){
+    private boolean checkMiddleOfBoardAvailable(){
         if(UI.boardButtons[verticalBoardIndex+1][horizontalBoardIndex][1].isEnabled()){
             UI.boardButtons[verticalBoardIndex+1][horizontalBoardIndex][1].doClick();
+            return true;
         }
+        return false;
     }
 
-    private void checkHorizontalVictoryClose(){
+    private boolean checkHorizontalVictoryClose(){
         for(int i = verticalBoardIndex; i < verticalBoardIndex+3; i++){
-            checkHorizontalCoordinates(i, horizontalBoardIndex);
+            if(checkHorizontalCoordinates(i, horizontalBoardIndex)){
+                return true;
+            }
         }
+        return false;
     }
 
-    private void checkHorizontalCoordinates(int i, int j){
+    private boolean checkHorizontalCoordinates(int i, int j){
         if(UIButtonMatchesPiece(i, j, 0) && UIButtonMatchesPiece(i, j, 1) && UI.boardButtons[i][j][2].isEnabled()){
          UI.boardButtons[i][j][2].doClick();
+         return true;
         }
         else if(UIButtonMatchesPiece(i, j, 1) && UIButtonMatchesPiece(i, j, 2) && UI.boardButtons[i][j][0].isEnabled()){
             UI.boardButtons[i][j][0].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i, j, 0) && UIButtonMatchesPiece(i, j, 2) && UI.boardButtons[i][j][1].isEnabled()){
             UI.boardButtons[i][j][1].doClick();
+            return true;
         }
+        return false;
     }
 
-    private void checkVerticalVictoryClose(){
+    private boolean checkVerticalVictoryClose(){
         for(int k = 0; k < 3; k++){
-            checkVerticalCoordinates(verticalBoardIndex, horizontalBoardIndex, k);
+            if(checkVerticalCoordinates(verticalBoardIndex, horizontalBoardIndex, k)){
+                return true;
+            }
         }
+        return false;
     }
 
-    private void checkVerticalCoordinates(int i, int j, int k){
+    private boolean checkVerticalCoordinates(int i, int j, int k){
         if(UIButtonMatchesPiece(i, j, k) && UIButtonMatchesPiece(i+1, j, k) && UI.boardButtons[i+2][j][k].isEnabled()){
             UI.boardButtons[i+2][j][k].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i, j, k) && UIButtonMatchesPiece(i+2, j, k) && UI.boardButtons[i+1][j][k].isEnabled()){
             UI.boardButtons[i+1][j][k].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i+1, j, k) && UIButtonMatchesPiece(i+2, j, k) && UI.boardButtons[i][j][k].isEnabled()){
             UI.boardButtons[i][j][k].doClick();
+            return true;
         }
+        return false;
     }
 
-    private void checkDiagonalVictoryClose(){
-        checkDiagonalVictoryClose1(verticalBoardIndex, horizontalBoardIndex);
-        checkDiagonalVictoryClose2(verticalBoardIndex, horizontalBoardIndex);
+    private boolean checkDiagonalVictoryClose(){
+        boolean diagonal1 = checkDiagonalVictoryClose1(verticalBoardIndex, horizontalBoardIndex);
+        boolean diagonal2 = checkDiagonalVictoryClose2(verticalBoardIndex, horizontalBoardIndex);
+        return diagonal1 || diagonal2;
     }
-    private void checkDiagonalVictoryClose1(int i, int j){
+    private boolean checkDiagonalVictoryClose1(int i, int j){
         if(UIButtonMatchesPiece(i, j, 0) && UIButtonMatchesPiece(i+1, j, 1) && UI.boardButtons[i+2][j][2].isEnabled()){
             UI.boardButtons[i+2][j][2].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i, j, 0) && UIButtonMatchesPiece(i+2, j, 2) && UI.boardButtons[i+1][j][1].isEnabled()){
             UI.boardButtons[i+1][j][1].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i+1, j, 1) && UIButtonMatchesPiece(i+2, j, 2) && UI.boardButtons[i][j][0].isEnabled()){
             UI.boardButtons[i][j][0].doClick();
+            return true;
         }
+        return false;
     }
-    private void checkDiagonalVictoryClose2(int i, int j){
+    private boolean checkDiagonalVictoryClose2(int i, int j){
         if(UIButtonMatchesPiece(i, j, 2) && UIButtonMatchesPiece(i+1, j, 1) && UI.boardButtons[i+2][j][0].isEnabled()){
             UI.boardButtons[i+2][j][0].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i, j, 2) && UIButtonMatchesPiece(i+2, j, 0) && UI.boardButtons[i+1][j][1].isEnabled()){
             UI.boardButtons[i+1][j][1].doClick();
+            return true;
         }
         else if(UIButtonMatchesPiece(i+1, j, 1) && UIButtonMatchesPiece(i+2, j, 0) && UI.boardButtons[i][j][2].isEnabled()){
             UI.boardButtons[i][j][2].doClick();
+            return true;
         }
+        return false;
     }
 
 
