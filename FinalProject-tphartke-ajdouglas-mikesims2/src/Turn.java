@@ -23,7 +23,6 @@ class Turn {
     void gameIsTied(){
         boolean gameTied = UltimateTicTacToe.checkForLocalTie();
         if(gameTied){
-            tieDialogue();
             myActionListener.makeButtonsUnEnabled();
         }
     }
@@ -40,11 +39,6 @@ class Turn {
         else{
             return UI.player2Name.getText();
         }
-    }
-
-    private void tieDialogue(){
-        UI.outputField.append("Tie game in board " + myActionListener.verticalBoardIndex + " " + myActionListener.horizontalBoardIndex + "\n");
-        Scoreboard.outputCurrentSessionScoring();
     }
 
     void checkForGlobalVictory(){
