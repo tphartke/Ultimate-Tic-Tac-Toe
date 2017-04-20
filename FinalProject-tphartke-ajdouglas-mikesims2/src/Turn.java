@@ -51,7 +51,7 @@ class Turn {
     }
 
     void checkForGlobalTie(){
-        boolean globalTie = UltimateTicTacToeVictoryConditions.checkForGlobalTie();
+        boolean globalTie = TicTacToe.checkTieCondition();
         if(globalTie){
             UI.outputField.append("Tie game!\n");
 

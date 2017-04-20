@@ -86,7 +86,7 @@ class TicTacToe {
     }
 
     static boolean checkTieCondition() {
-        return globalPlayingBoardIsFull() && !checkForWinCondition();
+        return globalPlayingBoardIsFull() && !UltimateTicTacToeVictoryConditions.checkForWinCondition();
     }
 
     static boolean globalPlayingBoardIsFull() {

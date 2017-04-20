@@ -70,7 +70,6 @@ class UI extends JFrame {
                 }
             }
         }
-
     }
 
     private void initializeScoreboard() throws IOException {
