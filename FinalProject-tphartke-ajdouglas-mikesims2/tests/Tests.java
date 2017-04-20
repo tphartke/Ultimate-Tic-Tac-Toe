@@ -233,7 +233,7 @@ public class Tests {
 
     @Test
     public void testAIWriteName(){
-        UI.AIGameButton.doClick();
+        UI.AIGameMenu.setSelectedIndex(2);
         Assert.assertEquals(UI.player2Name.getText(), "AI");
     }
 

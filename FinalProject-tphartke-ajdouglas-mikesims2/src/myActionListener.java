@@ -35,14 +35,14 @@ class myActionListener implements ActionListener {
             checkForNewPlayers();
         }
 
-        else if(e.getSource() == UI.AIGameButton){
+       /** else if(e.getSource() == UI.AIGameButton){
             clearGameBoard();
             Turn.turnNumber = 1;
             UI.playingAgainstAI = true;
             UI.player2Name.setText("AI");
             UI.outputField.append("Your play first!\n");
 
-        }
+        }**/
 
         else if(e.getSource() == UI.leaderboardButton) {
             UI.createLeaderboardFrame();

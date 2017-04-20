@@ -13,10 +13,12 @@ class UI extends JFrame {
     static JLabel player1Score = new JLabel("0");
     static JLabel player2Score = new JLabel("0");
     static JButton newGameButton = new JButton("New Game");
-    static JButton AIGameButton = new JButton("Play vs. CPU");
     static JTextField player1Name = new JTextField("Player 1");
     static JTextField player2Name = new JTextField("Player 2");
     static JButton leaderboardButton = new JButton("Leaderboard");
+
+    private static String[] AIDifficultyStrings = {"Select AI Difficulties", "Easy", "Medium", "Hard"};
+    static JComboBox<String> AIGameMenu = new JComboBox<>(AIDifficultyStrings);
 
     private JFrame frame = new JFrame("Tic-Tac-Toe");
     private JPanel playingBoard = new JPanel(new GridLayout(9, 9));
@@ -50,7 +52,7 @@ class UI extends JFrame {
     private void initializeButtons() throws IOException {
         initializeGameBoard();
         initializeStartButton();
-        initializeAIButton();
+        initializeAIMenu();
         initializeScoreboard();
         initializeLeaderboardButton();
     }
@@ -93,7 +95,7 @@ class UI extends JFrame {
     }
 
     private void addComponentsToPanel() {
-        buttonsPanel.add(AIGameButton, "West");
+        buttonsPanel.add(AIGameMenu, "West");
         buttonsPanel.add(leaderboardButton, "East");
         panel.add(this.playingBoard, "North");
         panel.add(this.buttonsPanel, "South");
@@ -123,8 +125,8 @@ class UI extends JFrame {
         outputField.setEditable(false);
     }
 
-    private void initializeAIButton() {
-        AIGameButton.addActionListener(new myActionListener());
+    private void initializeAIMenu() {
+        AIGameMenu.addActionListener(new myActionListener());
     }
 
     private void initializeLeaderboardButton() {
