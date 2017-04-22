@@ -29,26 +29,55 @@ class myActionListener implements ActionListener {
         if(e.getSource() == UI.newGameButton){
             clearGameBoard();
             UI.playingAgainstAI = false;
+            UI.playingAgainstEasyAI = false;
+            UI.playingAgainstMediumAI = false;
+            UI.playingAgainstEasyAI = false;
             Turn.turnNumber = 1;
             UltimateTicTacToe.clearUltimateTicTacToeGame();
             UI.outputField.append("\nNew game!\n");
             checkForNewPlayers();
         }
 
-       /** else if(e.getSource() == UI.AIGameButton){
-            clearGameBoard();
-            Turn.turnNumber = 1;
-            UI.playingAgainstAI = true;
-            UI.player2Name.setText("AI");
-            UI.outputField.append("Your play first!\n");
-
-        }**/
-
         else if(e.getSource() == UI.leaderboardButton) {
             UI.createLeaderboardFrame();
         }
 
+        else if(e.getSource() == UI.AIGameMenu){
+            AISetUp();
+            UI.playingAgainstAI = true;
+            UI.outputField.append("Your play first!\n");
+        }
     }
+
+    private void AISetUp(){
+        clearGameBoard();
+        Turn.turnNumber = 1;
+        getAIDifficultySelected();
+    }
+
+    private void getAIDifficultySelected(){
+        String difficultySelected = (String)UI.AIGameMenu.getSelectedItem();
+        switch (difficultySelected) {
+            case "Easy":
+                UI.playingAgainstEasyAI = true;
+                UI.player2Name.setText("Easy AI");
+                break;
+            case "Medium":
+                UI.playingAgainstMediumAI = true;
+                UI.player2Name.setText("Medium AI");
+                break;
+            case "Hard":
+                UI.playingAgainstHardAI = true;
+                UI.player2Name.setText("Hard AI");
+                UI.outputField.append("Good Luck...\n");
+                break;
+            default:
+                UI.playingAgainstAI = false;
+                UI.player2Name.setText("Player 2");
+                break;
+        }
+    }
+
     private void buttonPress(int x, int y, int z){
         setIndexes(x, y, z);
         UI.boardButtons[x][y][z].setText(currentTurnPiece);
@@ -77,9 +106,21 @@ class myActionListener implements ActionListener {
         }
     }
 
+    private void doAIDifficultyTurn(){
+        if(UI.playingAgainstEasyAI){
+            AI.doAITurn();
+        }
+        else if(UI.playingAgainstMediumAI){
+            AI.mediumAI();
+        }
+        else{
+            AI.hardAI();
+        }
+    }
+
     private void AITurn(){
         if(Turn.checkCurrentTurnPiece().equals("O")){
-            AI.doAITurn();
+            doAIDifficultyTurn();
         }
     }
 

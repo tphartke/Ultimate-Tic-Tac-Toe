@@ -40,7 +40,7 @@ class AI {
         }
     }
 
-    private void hardAI(){
+    void hardAI(){
         if(UltimateTicTacToe.SpaceInBoard()){
            doHardAITurn();
         }
@@ -51,6 +51,7 @@ class AI {
 
     private void doHardAITurn(){
         if(checkMiddleOfBoardAvailable()){
+            System.out.println("middle");
             return;
         }
         else if(checkHorizontalVictoryClose()){
@@ -62,6 +63,7 @@ class AI {
         else if(checkDiagonalVictoryClose()){
             return;
         }
+        System.out.println("Easy");
         doAITurn();
     }
     private boolean checkMiddleOfBoardAvailable(){

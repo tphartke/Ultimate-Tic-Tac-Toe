@@ -8,6 +8,9 @@ class UI extends JFrame {
     static final int BOARD_SPACES = 3;
 
     static boolean playingAgainstAI;
+    static boolean playingAgainstEasyAI;
+    static boolean playingAgainstMediumAI;
+    static boolean playingAgainstHardAI;
     static TextArea outputField = new TextArea();
     static JButton[][][] boardButtons = new JButton[9][3][3];
     static JLabel player1Score = new JLabel("0");
