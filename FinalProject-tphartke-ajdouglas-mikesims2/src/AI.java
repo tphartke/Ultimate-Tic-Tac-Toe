@@ -1,6 +1,7 @@
 class AI {
-    private int verticalBoardIndex = myActionListener.verticalBoardIndex;
-    private int horizontalBoardIndex = myActionListener.horizontalBoardIndex;
+    private int verticalBoardIndex;
+    private int horizontalBoardIndex;
+
     void doAITurn(){
         int vertical = (int)(Math.random()*9);
         int horizontal = (int)(Math.random()*3);
@@ -41,6 +42,8 @@ class AI {
     }
 
     void hardAI(){
+        verticalBoardIndex = myActionListener.verticalBoardIndex;
+        horizontalBoardIndex = myActionListener.horizontalBoardIndex;
         if(UltimateTicTacToe.SpaceInBoard()){
            doHardAITurn();
         }
@@ -50,11 +53,7 @@ class AI {
     }
 
     private void doHardAITurn(){
-        if(checkMiddleOfBoardAvailable()){
-            System.out.println("middle");
-            return;
-        }
-        else if(checkHorizontalVictoryClose()){
+        if(checkHorizontalVictoryClose()){
             return;
         }
         else if(checkVerticalVictoryClose()){
@@ -63,9 +62,14 @@ class AI {
         else if(checkDiagonalVictoryClose()){
             return;
         }
+        else if(checkMiddleOfBoardAvailable()){
+            System.out.println("middle");
+            return;
+        }
         System.out.println("Easy");
         doAITurn();
     }
+
     private boolean checkMiddleOfBoardAvailable(){
         if(UI.boardButtons[verticalBoardIndex+1][horizontalBoardIndex][1].isEnabled()){
             UI.boardButtons[verticalBoardIndex+1][horizontalBoardIndex][1].doClick();
@@ -129,6 +133,7 @@ class AI {
         boolean diagonal2 = checkDiagonalVictoryClose2(verticalBoardIndex, horizontalBoardIndex);
         return diagonal1 || diagonal2;
     }
+
     private boolean checkDiagonalVictoryClose1(int i, int j){
         if(UIButtonMatchesPiece(i, j, 0) && UIButtonMatchesPiece(i+1, j, 1) && UI.boardButtons[i+2][j][2].isEnabled()){
             UI.boardButtons[i+2][j][2].doClick();
@@ -144,6 +149,7 @@ class AI {
         }
         return false;
     }
+
     private boolean checkDiagonalVictoryClose2(int i, int j){
         if(UIButtonMatchesPiece(i, j, 2) && UIButtonMatchesPiece(i+1, j, 1) && UI.boardButtons[i+2][j][0].isEnabled()){
             UI.boardButtons[i+2][j][0].doClick();
