@@ -14,7 +14,7 @@ class Player {
     }
 
     Player(String name){
-        name = this.name;
+        this.name = name;
         wins = 0;
         losses = 0;
         ties = 0;
