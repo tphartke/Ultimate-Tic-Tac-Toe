@@ -1,6 +1,11 @@
+import org.xml.sax.SAXException;
+
 import java.awt.*;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
 
 class UI extends JFrame {
     static final int BOARD_HEIGHT = 9;
@@ -30,6 +35,11 @@ class UI extends JFrame {
     private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
+
+    static LeaderboardParser parser;
+    static LeaderboardReader reader;
+    static ArrayList<Player> playersList;
+
 
     UI() throws IOException {
         createFrame();
@@ -135,7 +145,7 @@ class UI extends JFrame {
         leaderboardButton.addActionListener(new myActionListener());
     }
 
-    static void createLeaderboardFrame() {
+    static void createLeaderboardFrame() throws ParserConfigurationException, SAXException, ParseException, IOException {
         new SecondPanel();
     }
 

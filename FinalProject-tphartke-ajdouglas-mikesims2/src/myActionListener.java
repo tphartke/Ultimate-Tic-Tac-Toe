@@ -1,6 +1,11 @@
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 class myActionListener implements ActionListener {
     private Turn turn;
@@ -39,7 +44,17 @@ class myActionListener implements ActionListener {
         }
 
         else if(e.getSource() == UI.leaderboardButton) {
-            UI.createLeaderboardFrame();
+            try {
+                UI.createLeaderboardFrame();
+            } catch (ParserConfigurationException e1) {
+                e1.printStackTrace();
+            } catch (SAXException e1) {
+                e1.printStackTrace();
+            } catch (ParseException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
 
         else if(e.getSource() == UI.AIGameMenu){
@@ -164,12 +179,12 @@ class myActionListener implements ActionListener {
         Player player1 = new Player(UI.player1Name.getText());
         Player player2 = new Player(UI.player2Name.getText());
 
-        if(LeaderboardReader.newPlayer(player1)){
+        if(LeaderboardReader.newPlayer(player1.getName())){
             LeaderboardReader.playerList.add(player1);
             UI.outputField.append("Welcome " + player1.getName() + "!\n");
         }
 
-        if(LeaderboardReader.newPlayer(player2)){
+        if(LeaderboardReader.newPlayer(player2.getName())){
             LeaderboardReader.playerList.add(player2);
             UI.outputField.append("Welcome " + player2.getName() + "!\n");
         }

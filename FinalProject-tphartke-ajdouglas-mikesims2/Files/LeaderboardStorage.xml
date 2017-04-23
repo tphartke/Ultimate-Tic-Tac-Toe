@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <leaderboard>
-<player playerName="Ashley">
-	<wins>1</wins>
-	<loses>0</loses>
-</player>
+	<player playerName="Ashley" wins = "1" losses = "0"/>
+	<player playerName="Timmy" wins = "3" losses = "2"/>
 </leaderboard>

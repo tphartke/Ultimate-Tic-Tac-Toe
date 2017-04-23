@@ -5,36 +5,32 @@ class Player {
     private int ties;
     private int totalgames;
 
-    Player(String name, int wins, int losses, int ties, int totalgames){
-        name = this.name;
-        wins = this.wins;
-        losses = this.losses;
-        ties = this.ties;
-        totalgames = this.totalgames;
-    }
-
     Player(String name){
         this.name = name;
-        wins = 0;
-        losses = 0;
-        ties = 0;
-        totalgames = 0;
+        if(LeaderboardReader.newPlayer(name)){
+            wins = 0;
+            losses = 0;
+            totalgames = 0;
+        }
+        else{
+            wins = LeaderboardReader.playerWins;
+            losses = LeaderboardReader.playerLosses;
+            totalgames = wins + losses;
+        }
     }
 
 
     public String toString(){
-        return name + "\t" + wins + "\t" + losses + "\t" + ties + "\t" + totalgames;
+        return name + "\t" + wins + "\t" + losses + "\t" + totalgames + "\n";
     }
 
     int increaseWins(){
         wins++;
-        totalgames++;
         return wins;
     }
 
     int increaseLosses(){
         losses++;
-        totalgames++;
         return losses;
     }
 

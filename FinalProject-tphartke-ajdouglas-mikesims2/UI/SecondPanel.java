@@ -1,5 +1,10 @@
+import org.xml.sax.SAXException;
+
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
+import java.io.IOException;
+import java.text.ParseException;
 
 class SecondPanel extends JFrame {
 
@@ -10,7 +15,7 @@ class SecondPanel extends JFrame {
     static JTextArea scoreboardData = new JTextArea();
 
 
-    SecondPanel() {
+    SecondPanel() throws ParserConfigurationException, SAXException, ParseException, IOException {
         super();
         createFrame();
         initialize();
@@ -23,15 +28,23 @@ class SecondPanel extends JFrame {
         frame.setVisible(true);
     }
 
-    private void initialize() {
+    private void initialize() throws ParserConfigurationException, SAXException, ParseException, IOException {
         addComponentsToPanel();
         frame.add(panel);
     }
 
-    private void addComponentsToPanel() {
+    private void addComponentsToPanel() throws ParserConfigurationException, SAXException, ParseException, IOException {
         addScoreboard();
+        addPlayerDataToPanel();
         panel.add(scoreboardData);
         scoreboardData.setEditable(false);
+    }
+
+    private void addPlayerDataToPanel() throws ParserConfigurationException, SAXException, IOException, ParseException {
+        UI.parser = new LeaderboardParser();
+        UI.reader = new LeaderboardReader(UI.parser.getDocument());
+        UI.playersList = UI.reader.readXML();
+        scoreboardData.append(UI.reader.toString(UI.playersList));
     }
 
     private void addScoreboard() {
