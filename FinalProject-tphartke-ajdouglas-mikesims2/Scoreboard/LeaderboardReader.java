@@ -7,8 +7,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import static java.lang.String.valueOf;
-
 class LeaderboardReader{
     private static Document document;
     static int playerWins;
@@ -54,7 +52,6 @@ class LeaderboardReader{
                 return false;
             }
         }
-        //playerList.add(new Player(playerName));
         return true;
     }
 

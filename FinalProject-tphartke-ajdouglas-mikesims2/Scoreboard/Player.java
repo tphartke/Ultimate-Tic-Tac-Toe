@@ -2,7 +2,6 @@ class Player {
     private String name;
     private int wins;
     private int losses;
-    private int ties;
     private int totalgames;
 
     Player(String name){
@@ -34,17 +33,19 @@ class Player {
         return losses;
     }
 
-    int increaseTies(){
-        ties++;
-        totalgames++;
-        return ties;
-    }
-
     int getTotalGames(){
         return totalgames;
     }
 
     String getName(){
         return name;
+    }
+
+    int getWins(){
+        return wins;
+    }
+
+    int getLosses(){
+        return losses;
     }
 }
