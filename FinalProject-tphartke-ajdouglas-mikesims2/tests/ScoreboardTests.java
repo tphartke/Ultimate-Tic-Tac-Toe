@@ -37,8 +37,6 @@ public class ScoreboardTests {
         UI.boardButtons[7][0][1].doClick();
         UI.boardButtons[5][1][0].doClick();
         UI.boardButtons[8][0][1].doClick();
-        //extra press to account for bug
-        UI.boardButtons[7][1][0].doClick();
         Assert.assertEquals(UI.player1Score.getText(), "1");
     }
 
@@ -66,8 +64,6 @@ public class ScoreboardTests {
         UI.boardButtons[6][0][1].doClick();
         UI.boardButtons[1][1][0].doClick();
         UI.boardButtons[5][0][1].doClick();
-        //extra press to account for bug
-        UI.boardButtons[6][1][0].doClick();
         Assert.assertEquals(UI.player2Score.getText(), "1");
     }
 }

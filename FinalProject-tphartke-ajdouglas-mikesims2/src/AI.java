@@ -44,28 +44,25 @@ class AI {
     void hardAI(){
         verticalBoardIndex = myActionListener.verticalBoardIndex;
         horizontalBoardIndex = myActionListener.horizontalBoardIndex;
-        if(UltimateTicTacToe.SpaceInBoard()){
-           doHardAITurn();
-        }
-        else{
+        if(!doHardAITurn()) {
             doAITurn();
         }
     }
 
-    private void doHardAITurn(){
+    private boolean doHardAITurn(){
         if(checkHorizontalVictoryClose()){
-            return;
+            return true;
         }
         else if(checkVerticalVictoryClose()){
-            return;
+            return true;
         }
         else if(checkDiagonalVictoryClose()){
-            return;
+            return true;
         }
-        else if(checkMiddleOfBoardAvailable()){
-            return;
+        else if(checkMiddleOfBoardAvailable()) {
+            return true;
         }
-        doAITurn();
+        return false;
     }
 
     private boolean checkMiddleOfBoardAvailable(){
