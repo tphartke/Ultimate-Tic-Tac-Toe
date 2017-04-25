@@ -63,10 +63,8 @@ class AI {
             return;
         }
         else if(checkMiddleOfBoardAvailable()){
-            System.out.println("middle");
             return;
         }
-        System.out.println("Easy");
         doAITurn();
     }
 

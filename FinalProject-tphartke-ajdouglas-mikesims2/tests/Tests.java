@@ -232,9 +232,20 @@ public class Tests {
     }
 
     @Test
-    public void testAIWriteName(){
+    public void testEastAIWriteName(){
+        UI.AIGameMenu.setSelectedIndex(1);
+        Assert.assertEquals(UI.player2Name.getText(), "Easy AI");
+    }
+    @Test
+    public void testMediumAIWriteName(){
         UI.AIGameMenu.setSelectedIndex(2);
-        Assert.assertEquals(UI.player2Name.getText(), "AI");
+        Assert.assertEquals(UI.player2Name.getText(), "Medium AI");
+    }
+
+    @Test
+    public void testHardAIWriteName(){
+        UI.AIGameMenu.setSelectedIndex(3);
+        Assert.assertEquals(UI.player2Name.getText(), "Hard AI");
     }
 
     @Test

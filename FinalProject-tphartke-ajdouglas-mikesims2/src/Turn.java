@@ -17,13 +17,6 @@ class Turn {
         if(gameWon){
             victoryDialogue();
             myActionListener.makeButtonsUnEnabled();
-            Player winningplayer = new Player(getCurrentPlayer(checkCurrentTurnPiece()));
-            winningplayer.increaseWins();
-            turnNumber++;
-            Player losingplayer = new Player(getCurrentPlayer(checkCurrentTurnPiece()));
-            losingplayer.increaseLosses();
-
-
         }
     }
 

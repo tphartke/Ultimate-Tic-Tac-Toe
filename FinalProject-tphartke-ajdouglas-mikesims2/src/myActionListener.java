@@ -40,21 +40,6 @@ class myActionListener implements ActionListener {
             Turn.turnNumber = 1;
             UltimateTicTacToe.clearUltimateTicTacToeGame();
             UI.outputField.append("\nNew game!\n");
-            checkForNewPlayers();
-        }
-
-        else if(e.getSource() == UI.leaderboardButton) {
-            try {
-                UI.createLeaderboardFrame();
-            } catch (ParserConfigurationException e1) {
-                e1.printStackTrace();
-            } catch (SAXException e1) {
-                e1.printStackTrace();
-            } catch (ParseException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
         }
 
         else if(e.getSource() == UI.AIGameMenu){
@@ -174,21 +159,4 @@ class myActionListener implements ActionListener {
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setEnabled(true);
         UI.boardButtons[horizontalIndex][verticalIndex][boardIndex].setBackground(Color.white);
     }
-
-    private void checkForNewPlayers(){
-        Player player1 = new Player(UI.player1Name.getText());
-        Player player2 = new Player(UI.player2Name.getText());
-
-        if(LeaderboardReader.newPlayer(player1.getName())){
-            LeaderboardReader.playerList.add(player1);
-            UI.outputField.append("Welcome " + player1.getName() + "!\n");
-        }
-
-        if(LeaderboardReader.newPlayer(player2.getName())){
-            LeaderboardReader.playerList.add(player2);
-            UI.outputField.append("Welcome " + player2.getName() + "!\n");
-        }
-    }
-
-
 }

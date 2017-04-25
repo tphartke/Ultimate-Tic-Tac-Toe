@@ -1,11 +1,6 @@
-import org.xml.sax.SAXException;
-
 import java.awt.*;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
 import javax.swing.*;
-import javax.xml.parsers.ParserConfigurationException;
 
 class UI extends JFrame {
     static final int BOARD_HEIGHT = 9;
@@ -23,7 +18,6 @@ class UI extends JFrame {
     static JButton newGameButton = new JButton("New Game");
     static JTextField player1Name = new JTextField("Player 1");
     static JTextField player2Name = new JTextField("Player 2");
-    static JButton leaderboardButton = new JButton("Leaderboard");
 
     private static String[] AIDifficultyStrings = {"Select AI Difficulties", "Easy", "Medium", "Hard"};
     static JComboBox<String> AIGameMenu = new JComboBox<>(AIDifficultyStrings);
@@ -35,11 +29,6 @@ class UI extends JFrame {
     private JPanel player2DisplayPanel = new JPanel(new BorderLayout());
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
-
-    static LeaderboardParser parser;
-    static LeaderboardReader reader;
-    static ArrayList<Player> playersList;
-
 
     UI() throws IOException {
         createFrame();
@@ -67,7 +56,6 @@ class UI extends JFrame {
         initializeStartButton();
         initializeAIMenu();
         initializeScoreboard();
-        initializeLeaderboardButton();
     }
 
     private void initializePanel() {
@@ -86,7 +74,6 @@ class UI extends JFrame {
     }
 
     private void initializeScoreboard() throws IOException {
-        LeaderboardReader.scoreboardReader();
         initializePlayerDisplayPanels();
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
         player1Score.setVerticalAlignment(SwingConstants.CENTER);
@@ -108,7 +95,6 @@ class UI extends JFrame {
 
     private void addComponentsToPanel() {
         buttonsPanel.add(AIGameMenu, "West");
-        buttonsPanel.add(leaderboardButton, "East");
         panel.add(this.playingBoard, "North");
         panel.add(this.buttonsPanel, "South");
         panel.add(this.gameActionStartPanel, "East");
@@ -139,14 +125,6 @@ class UI extends JFrame {
 
     private void initializeAIMenu() {
         AIGameMenu.addActionListener(new myActionListener());
-    }
-
-    private void initializeLeaderboardButton() {
-        leaderboardButton.addActionListener(new myActionListener());
-    }
-
-    static void createLeaderboardFrame() throws ParserConfigurationException, SAXException, ParseException, IOException {
-        new SecondPanel();
     }
 
 }
