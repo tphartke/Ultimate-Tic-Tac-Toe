@@ -92,9 +92,10 @@ class UI extends JFrame {
     private void initializePlayerDisplayPanels(){
         Player1DisplayPanel.add(player1Name, "North");
         Player1DisplayPanel.add(player1Score, "Center");
-        Player1DisplayPanel.setPreferredSize(new Dimension(300, 100));
+        Player1DisplayPanel.setPreferredSize(new Dimension(335, 100));
         Player1DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
         Player1DisplayPanel.setBackground(Color.red);
+        player2DisplayPanel.setPreferredSize(new Dimension(300, 100));
         player2DisplayPanel.setBackground(Color.green);
         player2DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
         player2DisplayPanel.add(player2Name, "North");
