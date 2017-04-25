@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class myActionListener implements ActionListener {
+
     private Turn turn;
     private AI AI;
     private String currentTurnPiece;
@@ -78,9 +79,9 @@ class myActionListener implements ActionListener {
         UI.boardButtons[x][y][z].setText(currentTurnPiece);
         UI.boardButtons[x][y][z].setBackground(Color.blue);
         UI.outputField.append(Turn.getCurrentPlayer(currentTurnPiece) +" put " + currentTurnPiece + " in coordinate " + x + " " + y + " " + z + "\n");
-        turn.gameIsWon();
         UI.boardButtons[x][y][z].setEnabled(false);
         Turn.turnNumber++;
+        turn.gameIsWon();
         turn.checkForGlobalVictory();
         makeButtonsUnEnabled();
         if(!UltimateTicTacToeVictoryConditions.checkForWinCondition()){
@@ -89,6 +90,7 @@ class myActionListener implements ActionListener {
     }
 
     private void setUpForNextTurn(){
+
         turn.checkForGlobalTie();
         UltimateTicTacToe.enableGameCoordinates();
         UltimateTicTacToe.checkForLocalVictory();
