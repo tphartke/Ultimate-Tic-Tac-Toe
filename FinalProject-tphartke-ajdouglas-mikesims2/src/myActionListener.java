@@ -89,6 +89,9 @@ class myActionListener implements ActionListener {
         if(!UltimateTicTacToeVictoryConditions.checkForWinCondition()){
             setUpForNextTurn();
         }
+        else{
+            makeButtonsUnEnabled();
+        }
     }
 
     private void setUpForNextTurn(){
@@ -109,7 +112,7 @@ class myActionListener implements ActionListener {
         else if(UI.playingAgainstMediumAI){
             AI.mediumAI();
         }
-        else{
+        else if(UI.playingAgainstHardAI){
             AI.hardAI();
         }
     }
