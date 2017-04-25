@@ -83,9 +83,5 @@ class UltimateTicTacToeVictoryConditions {
     private static boolean UIButtonMatchesPiece(int x, int y, char ticTacToePiece) {
         return UltimateTicTacToe.ultimateTicTacToeGame[x][y] == ticTacToePiece;
     }
-
-    static boolean checkForGlobalTie() {
-        return TicTacToe.globalPlayingBoardIsFull() && !UltimateTicTacToe.checkForLocalVictory();
-    }
 }
 
