@@ -30,6 +30,8 @@ class UI extends JFrame {
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
 
+    private Font myFont = new Font ("Times New Roman", 1, 40);
+
     UI() throws IOException {
         createFrame();
         initialize();
@@ -78,7 +80,7 @@ class UI extends JFrame {
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
         player1Score.setVerticalAlignment(SwingConstants.CENTER);
 
-        Font myFont = new Font ("Times New Roman", 1, 40);
+
         player1Score.setFont(myFont);
         player2Score.setFont(myFont);
 
