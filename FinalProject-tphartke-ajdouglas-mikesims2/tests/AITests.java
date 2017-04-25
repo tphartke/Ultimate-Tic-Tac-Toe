@@ -14,35 +14,24 @@ public class AITests {
         UI.newGameButton.doClick();
     }
 
-@Test
-    public void testTakeVerticalWin(){
-        UI.boardButtons[0][1][0].doClick();
+    @Test
+    public void testPlayEasyAI(){
+        UI.AIGameMenu.setSelectedIndex(1);
         UI.boardButtons[0][0][0].doClick();
-        UI.boardButtons[0][0][2].doClick();
-        UI.boardButtons[1][1][2].doClick();
-        UI.boardButtons[3][2][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-        UI.boardButtons[3][0][0].doClick();
-        UI.boardButtons[1][0][0].doClick();
-    Assert.assertTrue(TicTacToe.verticalVictory("O"));
-
+        Assert.assertEquals(Turn.checkCurrentTurnPiece(), "X");
     }
 
-@Test
-    public void testTakeHorizontalWin(){
-        UI.boardButtons[4][1][1].doClick();
-        UI.boardButtons[3][1][0].doClick();
-        UI.boardButtons[1][0][1].doClick();
-        UI.boardButtons[3][1][1].doClick();
-        UI.boardButtons[1][1][1].doClick();
-    Assert.assertTrue(TicTacToe.horizontalVictory("O"));
-
+    @Test
+    public void testPlayMediumAI(){
+        UI.AIGameMenu.setSelectedIndex(2);
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertEquals(Turn.checkCurrentTurnPiece(), "X");
     }
 
-@Test
-    public void testTakeDiagonalWin(){
-
-
+    @Test
+    public void testPlayHardAI(){
+        UI.AIGameMenu.setSelectedIndex(3);
+        UI.boardButtons[0][0][0].doClick();
+        Assert.assertEquals(Turn.checkCurrentTurnPiece(), "X");
     }
-
 }

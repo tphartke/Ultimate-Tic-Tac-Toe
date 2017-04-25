@@ -30,7 +30,7 @@ class UI extends JFrame {
     private JPanel buttonsPanel = new JPanel(new BorderLayout());
     private JPanel gameActionStartPanel = new JPanel(new BorderLayout());
 
-    private Font myFont = new Font ("Times New Roman", 1, 40);
+    private Font myFont = new Font ("Times New Roman", Font.BOLD, 40);
 
     UI() throws IOException {
         createFrame();
@@ -80,7 +80,6 @@ class UI extends JFrame {
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
         player1Score.setVerticalAlignment(SwingConstants.CENTER);
 
-
         player1Score.setFont(myFont);
         player2Score.setFont(myFont);
 
@@ -95,8 +94,8 @@ class UI extends JFrame {
         Player1DisplayPanel.add(player1Score, "Center");
         Player1DisplayPanel.setPreferredSize(new Dimension(300, 100));
         Player1DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
-        Player1DisplayPanel.setBackground(Color.blue);
-        player2DisplayPanel.setBackground(Color.red);
+        Player1DisplayPanel.setBackground(Color.red);
+        player2DisplayPanel.setBackground(Color.green);
         player2DisplayPanel.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
         player2DisplayPanel.add(player2Name, "North");
         player2DisplayPanel.add(player2Score, "Center");
