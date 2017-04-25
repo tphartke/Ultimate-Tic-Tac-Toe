@@ -1,4 +1,6 @@
-class Turn {
+
+
+public class Turn {
     static int turnNumber = 1;
 
     static String checkCurrentTurnPiece(){
