@@ -21,7 +21,7 @@ public class ScoreboardTests {
         UI.boardButtons[1][0][1].doClick();
         UI.boardButtons[3][1][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        Assert.assertEquals(UI.player1Score.getText(), "6");
+        Assert.assertEquals(UI.player1Score.getText(), "1");
     }
 
     @Test
@@ -32,6 +32,6 @@ public class ScoreboardTests {
         UI.boardButtons[1][0][1].doClick();
         UI.boardButtons[3][1][0].doClick();
         UI.boardButtons[0][0][0].doClick();
-        Assert.assertEquals(UI.player1Score.getText(), "3");
+        Assert.assertEquals(UI.player1Score.getText(), "1");
     }
 }

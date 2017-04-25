@@ -77,6 +77,11 @@ class UI extends JFrame {
         initializePlayerDisplayPanels();
         player1Score.setHorizontalAlignment(SwingConstants.CENTER);
         player1Score.setVerticalAlignment(SwingConstants.CENTER);
+
+        Font myFont = new Font ("Times New Roman", 1, 40);
+        player1Score.setFont(myFont);
+        player2Score.setFont(myFont);
+
         player2Score.setHorizontalAlignment(SwingConstants.CENTER);
         player2Score.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(Player1DisplayPanel, "West");
