@@ -80,20 +80,19 @@ class myActionListener implements ActionListener {
         UI.boardButtons[x][y][z].setBackground(Color.blue);
         UI.outputField.append(Turn.getCurrentPlayer(currentTurnPiece) +" put " + currentTurnPiece + " in coordinate " + x + " " + y + " " + z + "\n");
         UI.boardButtons[x][y][z].setEnabled(false);
-        Turn.turnNumber++;
         turn.gameIsWon();
-        turn.checkForGlobalVictory();
         makeButtonsUnEnabled();
+        UltimateTicTacToe.enableGameCoordinates();
+        UltimateTicTacToe.checkForLocalVictory();
+        turn.checkForGlobalVictory();
+        Turn.turnNumber++;
         if(!UltimateTicTacToeVictoryConditions.checkForWinCondition()){
             setUpForNextTurn();
         }
     }
 
     private void setUpForNextTurn(){
-
         turn.checkForGlobalTie();
-        UltimateTicTacToe.enableGameCoordinates();
-        UltimateTicTacToe.checkForLocalVictory();
         turn.gameIsTied();
         if(!UltimateTicTacToe.SpaceInBoard()){
             UltimateTicTacToe.enableButtonsTieCondition();
