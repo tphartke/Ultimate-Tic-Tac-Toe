@@ -89,7 +89,7 @@ class TicTacToe {
         return globalPlayingBoardIsFull() && !UltimateTicTacToeVictoryConditions.checkForWinCondition();
     }
 
-    static boolean globalPlayingBoardIsFull() {
+    private static boolean globalPlayingBoardIsFull() {
         boolean result = true;
         for (int i = 0; i < UI.BOARD_HEIGHT; i++) {
             for (int j = 0; j < UI.BOARD_COLUMNS; j++) {
