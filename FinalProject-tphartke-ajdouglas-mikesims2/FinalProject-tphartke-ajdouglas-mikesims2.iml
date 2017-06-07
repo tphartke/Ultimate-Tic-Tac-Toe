@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/UI" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Files" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Scoreboard" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/META-INF" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
