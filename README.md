@@ -1,5 +1,5 @@
 # final-proj_Tim_Ashley_Mike
-Ultimate Tic-Tac-Toe game v0.3.0
+Ultimate Tic-Tac-Toe game v1.0
 
 Authors:
 Timmy Hartke,
